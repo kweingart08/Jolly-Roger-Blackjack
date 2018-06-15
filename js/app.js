@@ -1,7 +1,11 @@
-console.log("i'm working");
+// console.log("Javascript is linked and working");
 
 $(() => { //start of on ready function
+  // console.log("jQuery is linked and working");
 
-  console.log("i'm working too");
+
+
+
+
 
 }); //end of on ready function
