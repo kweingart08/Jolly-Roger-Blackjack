@@ -77,14 +77,6 @@ const stand = () => {
 
 //create a check who won function
 const checkForWinner = () => {
-  //after dealing, check the two cards of the player to see if they are 21.
-  //if they are not,  wait for button click
-  //if they click HIT, then deal another card and check again,
-
-  //will need a for loops to go through and add everything in each of the arrays and then compare.
-  console.log(playerCards[0].value);
-  console.log(pirateCards[0].value);
-  //start simple by adding the cards in each array and comparing
   let playerCardValue = 0; //initial value of players cards starts at 0
   let pirateCardValue = 0; //initial value of pirate cards starts at 0
   //add the players cards
@@ -98,7 +90,19 @@ const checkForWinner = () => {
   }
     console.log(pirateCardValue);
 
-    
+    //after dealing, check the two cards of the player to see if they are 21.
+  if(playerCardValue > 21){
+    console.log("BUST");
+  } else if(pirateCardValue > 21){
+    console.log("Player Wins");
+  } else if(playerCardValue > pirateCardValue){
+    console.log("Player Wins");
+  } else {
+    console.log("Dealer wins");
+  }
+    //if they are not,  wait for button click
+    //if they click HIT, then deal another card and check again,
+
   //if they click STAY, then flip over the pirates card. Check if over 21 (bust, ...
   //need to check if the sum of the two cards is 21
 }; //end of winner function
