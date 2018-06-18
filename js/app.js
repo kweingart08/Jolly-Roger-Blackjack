@@ -68,11 +68,13 @@ class deckOfCards{ //class deck of cards
 //function for hit
 const hit = () =>{
   console.log("i work");
+  checkForWinner();
 }; //end of hit function
 
 //function for stay
 const stand = () => {
   console.log("i work too");
+  checkForWinner();
 }; //end of stand function
 
 //create a check who won function
@@ -116,7 +118,7 @@ const start = () => {
   deck1.dealCards();
   console.log(playerCards);
   console.log(pirateCards);
-  checkForWinner();
+
 }; //end of start function
 
 
