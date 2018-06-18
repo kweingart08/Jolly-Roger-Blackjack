@@ -60,17 +60,27 @@ class deckOfCards{ //class deck of cards
     //when these are created , make a div and an image to put the proper one there.
     const $playerCardDiv = $("<div>").addClass("dealt-card");
     $("#player-cards").append($playerCardDiv);
-    playerCards.push(this.deck.shift());
+    const playersCard = this.deck.shift();
+    playerCards.push(playersCard);
     //need to figure out what image should be appended to the div
     //create image and then make this the src.
+    const $image = $("<img>").attr("src", "images/cards/" + playersCard.face + playersCard.suit + ".png").addClass("card-images");
+    $("#player-cards").children("div:last").append($image);
+    // $(".dealt-card").append($image);
 
   }
   dealCardsPirate(){
     const $pirateCardsDiv = $("<div>").addClass("dealt-card");
     $("#pirate-cards").append($pirateCardsDiv);
-    pirateCards.push(this.deck.shift());//should be placed face down
+    const piratesCard = this.deck.shift();
+    pirateCards.push(piratesCard);//should be placed face down
     //make an if statment. if this is the first div then the image should be face down.
     //else face up.
+    //image for pirate cards created tags and appending to the last chilrdren of pirate cards
+    const $pirateImage = $("<img>");
+    $("#pirate-cards").children("div:last").append($pirateImage);
+    // const $images = $("<img>").attr("src", "images/cards/" + pirateCards.face + pirateCards.suit + ".png").addClass("card-images");
+    // $("#pirate-cards").children("div:last").append($images);
 
   }
 }
@@ -113,12 +123,12 @@ const checkForWinner = () => {
   for(let card of playerCards){ //go through each of the values from the player array and add it together to get the total player card value
     playerCardValue += card.value;
   }
-    console.log(playerCardValue); //logs the total player card value
+    // console.log(playerCardValue); //logs the total player card value
 
   for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
     pirateCardValue += card.value;
   }
-    console.log(pirateCardValue);
+    // console.log(pirateCardValue);
 
     //after dealing, check the two cards of the player to see if they are 21.
   if(playerCardValue > 21){
@@ -147,6 +157,10 @@ const start = () => {
   deck1.dealCardsPirate();
   deck1.dealCardsPlayer();
   deck1.dealCardsPirate();
+  //these are NOT working below:
+  // setTimeout(deck1.dealCardsPirate, 500);
+  // setTimeout(deck1.dealCardsPlayer, 1000);
+  // setTimeout(deck1.dealCardsPirate, 2000);
   console.log(playerCards);
   console.log(pirateCards);
 }; //end of start function
