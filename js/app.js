@@ -70,7 +70,7 @@ class deckOfCards{ //class deck of cards
     $("#pirate-cards").append($pirateCardsDiv);
     pirateCards.push(this.deck.shift());//should be placed face down
     //make an if statment. if this is the first div then the image should be face down.
-    //else face up. 
+    //else face up.
 
   }
 }
@@ -78,6 +78,12 @@ class deckOfCards{ //class deck of cards
 //create a function that checks the cards to determine what image to pull and use for the images in the div
 const cardImage = () => {
   //if statments to check the face and suit of eac card and determine what card image to use
+  // const $image = ("<img>");
+  //
+  // if(playerCard[i].face === 2 && playerCard[i].suit === "Clubs"){
+  //
+  // }
+
 
 }; //end of cardImage function
 
