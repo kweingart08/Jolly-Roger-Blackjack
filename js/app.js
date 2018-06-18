@@ -51,10 +51,10 @@ class deckOfCards{ //class deck of cards
   }
   dealCards(){//deal the initial starting cards
     //when these are created , make a div and an image to put the proper one there.
-    playerCards.push(this.deck[0]);
-    pirateCards.push(this.deck[1]);//should be placed face down
-    playerCards.push(this.deck[2]);
-    pirateCards.push(this.deck[3]);
+    playerCards.push(this.deck.shift());
+    pirateCards.push(this.deck.shift());//should be placed face down
+    playerCards.push(this.deck.shift());
+    pirateCards.push(this.deck.shift());
   }
   //create a deal cards method? to start the deal and lay cards in order into the different player and pirate areas.
   compareCards(){ //create a method to compare the cards
@@ -76,7 +76,6 @@ const winner = () => {
   //if they click HIT, then deal another card and check again,
 
   //if they click STAY, then flip over the pirates card. Check if over 21 (bust, ...
-)
   //need to check if the sum of the two cards is 21
 }; //end of winner function
 
