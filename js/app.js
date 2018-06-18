@@ -56,14 +56,26 @@ class deckOfCards{ //class deck of cards
     //return the new deck array
     return this.deck;
   }
-  dealCards(){//deal the initial starting cards
+  dealCardsPlayer(){//deal the initial starting cards
     //when these are created , make a div and an image to put the proper one there.
+    const $playerCardDiv = $("<div>").addClass("dealt-card");
+    $("#player-cards").append($playerCardDiv);
     playerCards.push(this.deck.shift());
+    // playerCards.push(this.deck.shift());
+  }
+  dealCardsPirate(){
+    const $pirateCardsDiv = $("<div>").addClass("dealt-card");
+    $("#pirate-cards").append($pirateCardsDiv);
     pirateCards.push(this.deck.shift());//should be placed face down
-    playerCards.push(this.deck.shift());
-    pirateCards.push(this.deck.shift());
+    // pirateCards.push(this.deck.shift());
   }
 }
+
+//create a function that checks the cards to determine what image to pull and use for the images in the div
+const cardImage = () => {
+  //if statments to check the face and suit of eac card and determine what card image to use
+
+}; //end of cardImage function
 
 //function for hit
 const hit = () =>{
@@ -120,7 +132,10 @@ const start = () => {
   const deck1 = new deckOfCards();
   deck1.shuffle();
   console.log(deck1.deck);
-  deck1.dealCards();
+  deck1.dealCardsPlayer();
+  deck1.dealCardsPirate();
+  deck1.dealCardsPlayer();
+  deck1.dealCardsPirate();
   console.log(playerCards);
   console.log(pirateCards);
 
