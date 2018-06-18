@@ -63,18 +63,17 @@ class deckOfCards{ //class deck of cards
     playerCards.push(this.deck.shift());
     pirateCards.push(this.deck.shift());
   }
-  //create a deal cards method? to start the deal and lay cards in order into the different player and pirate areas.
-  compareCards(){ //create a method to compare the cards
-    //this is from an old javascript file -- need to remove this but use similar way to compare the sum of the cards and compare the player vs the dealer
-    if(this.deck[0] === this.deck[this.deck.length-1]){
-      console.log("These are the same! They are both " + this.deck[0]);
-    } else if(this.deck[0] > this.deck[this.deck.length -1]){
-      console.log(this.deck[0] + " is the larger card");
-    } else {
-      console.log(this.deck[this.deck.length-1] + " is the larger card");
-    }
-  }
 }
+
+//function for hit
+const hit = () =>{
+  console.log("i work");
+}; //end of hit function
+
+//function for stay
+const stand = () => {
+  console.log("i work too");
+}; //end of stand function
 
 //create a check who won function
 const checkForWinner = () => {
@@ -104,7 +103,10 @@ const start = () => {
 
 
 //all of the onclick functions:
-$("#lets-play").on("click", start);
+$("#lets-play").on("click", start); //if start is clicked, run start function
+$("#hit").on("click", hit); //if the hit button is clicked, run the hit function
+$("#stand").on("click", stand); //if the stand button is clicked, run the stand function
+
 
 
 
