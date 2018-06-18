@@ -80,9 +80,10 @@ const cardImage = () => {
   //if statments to check the face and suit of eac card and determine what card image to use
   // const $image = ("<img>");
   //
-  // if(playerCard[i].face === 2 && playerCard[i].suit === "Clubs"){
+  // src = "cards/" + playerCards[0].face + playerCards[0].suit + ".png"
+  //JackClubs.png
   //
-  // }
+  //
 
 
 }; //end of cardImage function
@@ -148,7 +149,6 @@ const start = () => {
   deck1.dealCardsPirate();
   console.log(playerCards);
   console.log(pirateCards);
-
 }; //end of start function
 
 
