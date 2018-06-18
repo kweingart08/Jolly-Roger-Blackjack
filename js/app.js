@@ -61,11 +61,17 @@ class deckOfCards{ //class deck of cards
 
 //when a new game is started, create a new deckOfCards and shuffle before playing.
 //order will be create deck, shuffle, then deal. Deal will only deal the beginning to start until a button is click.
+const start = () => {
+  const deck1 = new deckOfCards();
+  deck1.shuffle();
+  console.log(deck1.deck);
+  //deck1.deal();
+}; //end of start function
 
-const deck1 = new deckOfCards();
-deck1.shuffle();
-console.log(deck1.deck);
-deck1.compareCards();
+
+//all of the onclick functions:
+$("#lets-play").on("click", start);
+
 
 
 
