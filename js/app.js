@@ -84,7 +84,21 @@ const checkForWinner = () => {
   //will need a for loops to go through and add everything in each of the arrays and then compare.
   console.log(playerCards[0].value);
   console.log(pirateCards[0].value);
+  //start simple by adding the cards in each array and comparing
+  let playerCardValue = 0; //initial value of players cards starts at 0
+  let pirateCardValue = 0; //initial value of pirate cards starts at 0
+  //add the players cards
+  for(let card of playerCards){ //go through each of the values from the player array and add it together to get the total player card value
+    playerCardValue += card.value;
+  }
+    console.log(playerCardValue); //logs the total player card value
 
+  for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
+    pirateCardValue += card.value;
+  }
+    console.log(pirateCardValue);
+
+    
   //if they click STAY, then flip over the pirates card. Check if over 21 (bust, ...
   //need to check if the sum of the two cards is 21
 }; //end of winner function
