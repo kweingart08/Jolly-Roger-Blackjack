@@ -11,7 +11,7 @@ body {
 
 .race {
   width: 100%;
-  height: 200px;
+  height: 250px;
   border: 1px solid red;
   display: flex;
   justify-content: center;
@@ -19,7 +19,7 @@ body {
 
 .boat-races {
   width: 75%;
-  height: 200px;
+  height: 100%;
   border: 1px solid green;
   display: flex;
   flex-direction: column;
@@ -27,27 +27,73 @@ body {
 
 .boat {
   width: 100%;
-  height: 100px;
+  height: 50%;
   border: 1px solid green;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.boat-picture {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.boat-image {
+  height: 100%;
+  width: 100%;
+}
+
+.water {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.water-image {
+  height: 100%;
+  flex-grow: 1;
+  min-width: 25%;
 }
 
 .land {
   width: 20%;
-  height: 200px;
+  height: 100%;
   border: 1px solid purple;
+}
+
+#land {
+  width: 100%;
+  height: 100%;
 }
 
 .game {
   width: 100%;
-  height: 400px;
+  height: 500px;
   border: 1px solid red;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
-.cards {
+#header-to-start {
   width: 100%;
-  min-height: 100px;
-  border: 1px solid hotpink;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#people-div {
+  width: 100%;
+  height: 35%;
+  border: 1px solid grey;
+}
+
+#game-area {
+  width: 100%;
+  height: 55%;
+  border: 1px solid grey;
 }
