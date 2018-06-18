@@ -68,12 +68,17 @@ class deckOfCards{ //class deck of cards
 //function for hit
 const hit = () =>{
   console.log("i work");
-  checkForWinner();
+  //use deck1.shift() to get the next card...
+  //need to go back and deal one card. // create a method for dealing after initial deal?
+  checkForWinner(); //check if 21 or above 21 (bust), but if it isn's 21 or above and they haven't chosen stand yet, then get out of check winner...
 }; //end of hit function
 
 //function for stay
 const stand = () => {
   console.log("i work too");
+  //if they are standing, then need to go check the dealers hand and determine if they need more cards...
+  //if under 17... make a function here to checkDealersHand??
+
   checkForWinner();
 }; //end of stand function
 
