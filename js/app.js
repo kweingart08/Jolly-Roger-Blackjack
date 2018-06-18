@@ -61,13 +61,17 @@ class deckOfCards{ //class deck of cards
     const $playerCardDiv = $("<div>").addClass("dealt-card");
     $("#player-cards").append($playerCardDiv);
     playerCards.push(this.deck.shift());
-    // playerCards.push(this.deck.shift());
+    //need to figure out what image should be appended to the div
+    //create image and then make this the src.
+
   }
   dealCardsPirate(){
     const $pirateCardsDiv = $("<div>").addClass("dealt-card");
     $("#pirate-cards").append($pirateCardsDiv);
     pirateCards.push(this.deck.shift());//should be placed face down
-    // pirateCards.push(this.deck.shift());
+    //make an if statment. if this is the first div then the image should be face down.
+    //else face up. 
+
   }
 }
 
