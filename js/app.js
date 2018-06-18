@@ -3,6 +3,10 @@
 $(() => { //start of on ready function
   // console.log("jQuery is linked and working");
 
+//create empty arrays for the player and pirates cards to be pushed to.
+const playerCards = [];
+const pirateCards = [];
+
 //create a deck of cards and make a shuffle function
 class deckOfCards{ //class deck of cards
   constructor(){ //constructor is made of the suits and faces and an array of all of the cards
@@ -45,7 +49,13 @@ class deckOfCards{ //class deck of cards
     //return the new deck array
     return this.deck;
   }
-
+  dealCards(){//deal the initial starting cards
+    //when these are created , make a div and an image to put the proper one there.
+    playerCards.push(this.deck[0]);
+    pirateCards.push(this.deck[1]);//should be placed face down
+    playerCards.push(this.deck[2]);
+    pirateCards.push(this.deck[3]);
+  }
   //create a deal cards method? to start the deal and lay cards in order into the different player and pirate areas.
   compareCards(){ //create a method to compare the cards
     //this is from an old javascript file -- need to remove this but use similar way to compare the sum of the cards and compare the player vs the dealer
@@ -59,13 +69,26 @@ class deckOfCards{ //class deck of cards
   }
 }
 
+//create a check who won function
+const winner = () => {
+  //after dealing, check the two cards of the player to see if they are 21.
+  //if they are not,  wait for button click
+  //if they click HIT, then deal another card and check again,
+
+  //if they click STAY, then flip over the pirates card. Check if over 21 (bust, ...
+)
+  //need to check if the sum of the two cards is 21
+}; //end of winner function
+
 //when a new game is started, create a new deckOfCards and shuffle before playing.
 //order will be create deck, shuffle, then deal. Deal will only deal the beginning to start until a button is click.
 const start = () => {
   const deck1 = new deckOfCards();
   deck1.shuffle();
   console.log(deck1.deck);
-  //deck1.deal();
+  deck1.dealCards();
+  console.log(playerCards);
+  console.log(pirateCards);
 }; //end of start function
 
 
