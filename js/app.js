@@ -17,6 +17,7 @@ class deckOfCards{ //class deck of cards
     let value; //create variable value
     let suit; //create variable suit
     let face; //create variable face
+    let card = {};
 
     //for every suit, give it each face and determine the value of the card
     for(let s in suits){
@@ -31,7 +32,13 @@ class deckOfCards{ //class deck of cards
           value = face;
         }
         //push the face, suit, and value of each card into the deck array
-        this.deck.push(faces[f] + " of " + suits[s] + " , " + "Value of " + value);
+        // this.deck.push(faces[f] + " of " + suits[s] + " , " + "Value of " + value);
+        card = {
+          face: faces[f],
+          suit: suits[s],
+          value: value
+        };
+        this.deck.push(card);
       }
     }
   }
@@ -70,10 +77,14 @@ class deckOfCards{ //class deck of cards
 }
 
 //create a check who won function
-const winner = () => {
+const checkForWinner = () => {
   //after dealing, check the two cards of the player to see if they are 21.
   //if they are not,  wait for button click
   //if they click HIT, then deal another card and check again,
+
+  //will need a for loops to go through and add everything in each of the arrays and then compare.
+  console.log(playerCards[0].value);
+  console.log(pirateCards[0].value);
 
   //if they click STAY, then flip over the pirates card. Check if over 21 (bust, ...
   //need to check if the sum of the two cards is 21
@@ -88,6 +99,7 @@ const start = () => {
   deck1.dealCards();
   console.log(playerCards);
   console.log(pirateCards);
+  checkForWinner();
 }; //end of start function
 
 
