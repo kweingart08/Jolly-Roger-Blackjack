@@ -87,7 +87,6 @@ $(() => { //start of on ready function
       //create if statement, if there aren't any cards left, need to let deck1 = new deck and then shuffle again.
 
 
-
       const $pirateCardsDiv = $("<div>").addClass("dealt-card");
       $("#pirate-cards").append($pirateCardsDiv);
       const currentPirateCard = this.deck.shift();
@@ -105,7 +104,6 @@ $(() => { //start of on ready function
         const $backImage = $("<img>").attr("src", "images/cards/back-of-card.png").addClass("card-images").attr("id", "back-of-card");
         $pirateCardsDiv.append($backImage);
       }
-
 
     }
   }
@@ -131,11 +129,25 @@ $(() => { //start of on ready function
     $("#pirate-cards").children("div:first").children().show(); //shows the first element once the stand button is clicked
 
     //if they are standing, then need to go check the dealers hand and determine if they need more cards...
-
+    pirateCardValue = 0;
+    for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
+      pirateCardValue += card.value;
+    }
     //if under 17... make a function here to checkDealersHand?? and then give another card
+      if(pirateCardValue < 17){
+        deck1.dealCardsPirate();
+        pirateCardValue = 0;
+        for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
+          pirateCardValue += card.value;
+        }
+        if(pirateCardValue < 17){
+          deck1.dealCardsPlayer();
+        }
+        checkForWinner();
+      } else {
+        checkForWinner();
+      }
 
-
-    checkForWinner();
   }; //end of stand function
 
   //create a check who won function
