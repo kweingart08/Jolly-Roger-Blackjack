@@ -136,7 +136,7 @@ $(() => { //start of on ready function
 
   //function for stay
   const stand = () => {
-    console.log("i work too");
+    // console.log("i work too");
     //need to show the first pirate element
     $("#back-of-card").remove(); //remove the back of the card
     $("#pirate-cards").children("div:first").children().show(); //shows the first element once the stand button is clicked
@@ -266,10 +266,15 @@ $(() => { //start of on ready function
     pirateCards=[];
     $("#player-cards").children().remove();
     $("#pirate-cards").children().remove();
-    // deck1 = new deckOfCards(); //restart the deck to be fresh. If don't want this can remove. Ideally you would just restart with whatever cards are left so keeping this out of the function
+    deck1 = new deckOfCards(); //restarting creates a fresh deck of cards
 
     //***NEED TO ADD A translate css function to move all boats back to the beginning. Possibly do a negative of whatever the player points is at. *****
 
+    $("#player-boat").css("transform", "translate(-" + playerBoatPoints/2 + "%)");
+    $("#pirate-boat").css("transform", "translate(-" + playerBoatPoints/2 + "%)");
+
+    pirateBoatPoints = 0;
+    playerBoatPoints = 0;
 
   }; //end of restart function
 
