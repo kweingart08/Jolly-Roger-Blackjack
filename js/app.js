@@ -2,13 +2,26 @@
 
 $(() => { //start of on ready function
   // console.log("jQuery is linked and working");
+  let playerBoatPoints = 0;
+  let pirateBoatPoints = 0;
+
+  const checkTotalPoints = () => { //boats are translating 100% of the size of the boat. therefore since the boat picture is 20% of the whole and water is 80%. Need to get to 500 points to win
+    console.log(playerBoatPoints);
+    console.log(pirateBoatPoints);
+    if(playerBoatPoints >= 500){
+      console.log("PLAYER WINS");
+      console.log(playerBoatPoints);
+      //end of game
+    }
+    else if(pirateBoatPoints >= 500){
+      console.log("PIRATE WINS");
+      console.log(pirateBoatPoints);
+    }
+  }; //end of checking total points
 
   //create empty arrays for the player and pirates cards to be pushed to.
   let playerCards = [];
   let pirateCards = [];
-
-  let playerBoatPoints = 0;
-  let pirateBoatPoints = 0;
 
   //create a deck of cards and make a shuffle function
   class deckOfCards{ //class deck of cards
@@ -74,7 +87,7 @@ $(() => { //start of on ready function
       $("#player-cards").children("div:last").append($image);
       // $(".dealt-card").append($image);
 
-      if(playerCards[1] && !playerCards[2]){ //if there is a second card out there
+      if(playerCards[1] && (!playerCards[2])){ //if there is a second card out there
         //check if 21
         checkForBlackjack();
         // playerCardValue = 0;
@@ -141,7 +154,7 @@ $(() => { //start of on ready function
           pirateCardValue += card.value;
         }
         if(pirateCardValue < 17){
-          deck1.dealCardsPlayer();
+          deck1.dealCardsPirate();
         }
         checkForWinner();
       } else {
@@ -162,7 +175,8 @@ $(() => { //start of on ready function
     if(playerCardValue === 21){
       console.log("You got a BlackJack!!");
       playerBoatPoints += 100;
-      $("#player-boat").css("transform", "translate(" + playerBoatPoints + "px)");
+      $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
+      checkTotalPoints();
 
     } else {
       checkForBust();
@@ -177,7 +191,8 @@ $(() => { //start of on ready function
     if(playerCardValue > 21){
       console.log("BUST");
       pirateBoatPoints += 100;
-      $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "px)");
+      $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
+      checkTotalPoints();
     }
   }; //end of check for bust
 
@@ -200,17 +215,21 @@ $(() => { //start of on ready function
     if(pirateCardValue > 21){
       console.log("Player Wins");
       playerBoatPoints += 100;
-      $("#player-boat").css("transform", "translate(" + playerBoatPoints + "px)");
+      $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
+      checkTotalPoints();
 
     } else if(playerCardValue > pirateCardValue){
       console.log("Player Wins");
       playerBoatPoints += 100;
-      $("#player-boat").css("transform", "translate(" + playerBoatPoints + "px)");
+      $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
+      checkTotalPoints();
 
     } else {
       console.log("Dealer wins");
       pirateBoatPoints += 100;
-      $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "px)");
+      $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
+      checkTotalPoints();
+
     }
       //if they are not,  wait for button click
       //if they click HIT, then deal another card and check again,
