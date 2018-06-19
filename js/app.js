@@ -72,31 +72,21 @@ class deckOfCards{ //class deck of cards
   dealCardsPirate(){
     const $pirateCardsDiv = $("<div>").addClass("dealt-card");
     $("#pirate-cards").append($pirateCardsDiv);
-    const piratesCard = this.deck.shift();
-    pirateCards.push(piratesCard);//should be placed face down
+    const currentPirateCard = this.deck.shift();
+    pirateCards.push(currentPirateCard);//should be placed face down
     //make an if statment. if this is the first div then the image should be face down.
+    console.log(pirateCards.face);//this is showing up as undefined
     //else face up.
     //image for pirate cards created tags and appending to the last chilrdren of pirate cards
-    const $pirateImage = $("<img>");
+    const $pirateImage = $("<img>").attr("src", "images/cards/2Clubs.png").addClass("card-images"); //need to update this source
     $("#pirate-cards").children("div:last").append($pirateImage);
+
     // const $images = $("<img>").attr("src", "images/cards/" + pirateCards.face + pirateCards.suit + ".png").addClass("card-images");
-    // $("#pirate-cards").children("div:last").append($images);
+
 
   }
 }
 
-//create a function that checks the cards to determine what image to pull and use for the images in the div
-const cardImage = () => {
-  //if statments to check the face and suit of eac card and determine what card image to use
-  // const $image = ("<img>");
-  //
-  // src = "cards/" + playerCards[0].face + playerCards[0].suit + ".png"
-  //JackClubs.png
-  //
-  //
-
-
-}; //end of cardImage function
 
 //function for hit
 const hit = () =>{
@@ -156,7 +146,7 @@ const start = () => {
   deck1.dealCardsPlayer();
   deck1.dealCardsPirate();
   deck1.dealCardsPlayer();
-  deck1.dealCardsPirate();
+  // deck1.dealCardsPirate();
   //these are NOT working below:
   // setTimeout(deck1.dealCardsPirate, 500);
   // setTimeout(deck1.dealCardsPlayer, 1000);
