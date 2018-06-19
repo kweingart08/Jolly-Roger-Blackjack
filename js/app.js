@@ -118,11 +118,6 @@ $(() => { //start of on ready function
 
     deck1.dealCardsPlayer();
 
-    //*******check for animation to work
-    // $("#player-boat").css("transform", "translate(50px)");
-    // *******move this animation where needed when winner happens.
-    //Create variables to keep track of "Point" which will equal the amount of px moved. Once player points or moved pixels is equal to X then declare official winner ***this is the end state. All others are just winners of hands and will move boats. Not overall winners
-
     checkForBlackjack(); //check if 21 or above 21 (bust), but if it isn's 21 or above and they haven't chosen stand yet, then get out of check winner...
   }; //end of hit function
 
@@ -228,6 +223,11 @@ $(() => { //start of on ready function
   //order will be create deck, shuffle, then deal. Deal will only deal the beginning to start until a button is click.
   let deck1 = new deckOfCards();
   const start = () => {
+    playerCards=[];
+    pirateCards=[];
+    $("#player-cards").children().remove();
+    $("#pirate-cards").children().remove();
+
     deck1.shuffle();
     console.log(deck1.deck);
     deck1.dealCardsPlayer();
