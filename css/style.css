@@ -1,6 +1,5 @@
 .container {
   width: 85%;
-  border: 2px solid grey;
   margin: auto;
   text-align: center;
 }
@@ -8,7 +7,6 @@
 .race {
   width: 100%;
   height: 250px;
-  border: 1px solid black;
   display: flex;
   justify-content: center;
 }
@@ -65,7 +63,6 @@
 .game {
   width: 100%;
   height: 500px;
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -77,6 +74,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 10px;
 }
 
 .players {
@@ -86,14 +84,23 @@
   justify-content: center;
 }
 
-.versus, #pirate, #player1 {
-  width: 30%;
+#pirate, #player1 {
+  width: 40%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 1px solid black;
+}
+
+.versus {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .people {
@@ -142,8 +149,54 @@
 }
 
 .hit-and-stay {
-  max-width: 20%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 40px;
+}
+
+#lets-play {
+  margin: 0 40px;
+  font-size: 28px;
+  border-radius: 5px;
+  background: #69FFD1;
+}
+
+#restart {
+  margin: 0 40px;
+  background: #7F1C1F;
+  color: white;
+  font-size: 23px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#restart:hover {
+  background: #232323;
+  color: white;
+}
+
+#lets-play:hover {
+  background: #232323;
+  color: white;
+}
+
+.decision {
+  margin: 15px;
+}
+
+#hit, #stand{
+  font-size: 20px;
+  border-radius: 7px;
+  padding: 10px;
+  border: 2px solid #2067E5;
+}
+
+#hit:hover, #stand:hover {
+  background: #97EBFA;
 }
