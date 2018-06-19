@@ -60,11 +60,11 @@ class deckOfCards{ //class deck of cards
     //when these are created , make a div and an image to put the proper one there.
     const $playerCardDiv = $("<div>").addClass("dealt-card");
     $("#player-cards").append($playerCardDiv);
-    const playersCard = this.deck.shift();
-    playerCards.push(playersCard);
+    const currentPlayerCard = this.deck.shift();
+    playerCards.push(currentPlayerCard);
     //need to figure out what image should be appended to the div
     //create image and then make this the src.
-    const $image = $("<img>").attr("src", "images/cards/" + playersCard.face + playersCard.suit + ".png").addClass("card-images");
+    const $image = $("<img>").attr("src", "images/cards/" + currentPlayerCard.face + currentPlayerCard.suit + ".png").addClass("card-images");
     $("#player-cards").children("div:last").append($image);
     // $(".dealt-card").append($image);
 
@@ -75,10 +75,10 @@ class deckOfCards{ //class deck of cards
     const currentPirateCard = this.deck.shift();
     pirateCards.push(currentPirateCard);//should be placed face down
     //make an if statment. if this is the first div then the image should be face down.
-    console.log(pirateCards.face);//this is showing up as undefined
+
     //else face up.
     //image for pirate cards created tags and appending to the last chilrdren of pirate cards
-    const $pirateImage = $("<img>").attr("src", "images/cards/2Clubs.png").addClass("card-images"); //need to update this source
+    const $pirateImage = $("<img>").attr("src", "images/cards/" + currentPirateCard.face + currentPirateCard.suit + ".png").addClass("card-images"); //need to update this source
     $("#pirate-cards").children("div:last").append($pirateImage);
 
     // const $images = $("<img>").attr("src", "images/cards/" + pirateCards.face + pirateCards.suit + ".png").addClass("card-images");
@@ -146,7 +146,7 @@ const start = () => {
   deck1.dealCardsPlayer();
   deck1.dealCardsPirate();
   deck1.dealCardsPlayer();
-  // deck1.dealCardsPirate();
+  deck1.dealCardsPirate();
   //these are NOT working below:
   // setTimeout(deck1.dealCardsPirate, 500);
   // setTimeout(deck1.dealCardsPlayer, 1000);
