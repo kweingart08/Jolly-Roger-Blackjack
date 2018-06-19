@@ -57,6 +57,9 @@ $(() => { //start of on ready function
       return this.deck;
     }
     dealCardsPlayer(){//deal the initial starting cards
+      //create if statement, if there aren't any cards left, need to let deck1 = new deck and then shuffle again.
+
+
       //when these are created , make a div and an image to put the proper one there.
       const $playerCardDiv = $("<div>").addClass("dealt-card");
       $("#player-cards").append($playerCardDiv);
@@ -68,8 +71,23 @@ $(() => { //start of on ready function
       $("#player-cards").children("div:last").append($image);
       // $(".dealt-card").append($image);
 
+      if(playerCards[1] && !playerCards[2]){ //if there is a second card out there
+        //check if 21
+        checkForBlackjack();
+        // playerCardValue = 0;
+        // for(let card of playerCards){ //go through each of the values from the player array and add it together to get the total player card value
+        //   playerCardValue += card.value;
+        // }
+        // if(playerCardValue === 21){
+        //   console.log("You got a BlackJack!!");
+        // }
+      } //else wait for the hit or stand buttons to be clicked
     }
     dealCardsPirate(){
+      //create if statement, if there aren't any cards left, need to let deck1 = new deck and then shuffle again.
+
+
+
       const $pirateCardsDiv = $("<div>").addClass("dealt-card");
       $("#pirate-cards").append($pirateCardsDiv);
       const currentPirateCard = this.deck.shift();
@@ -102,7 +120,7 @@ $(() => { //start of on ready function
 
     //use deck1.shift() to get the next card...
     //need to go back and deal one card. // create a method for dealing after initial deal?
-    checkForWinner(); //check if 21 or above 21 (bust), but if it isn's 21 or above and they haven't chosen stand yet, then get out of check winner...
+    checkForBlackjack(); //check if 21 or above 21 (bust), but if it isn's 21 or above and they haven't chosen stand yet, then get out of check winner...
   }; //end of hit function
 
   //function for stay
@@ -114,31 +132,55 @@ $(() => { //start of on ready function
 
     //if they are standing, then need to go check the dealers hand and determine if they need more cards...
 
-    //if under 17... make a function here to checkDealersHand??
+    //if under 17... make a function here to checkDealersHand?? and then give another card
+
 
     checkForWinner();
   }; //end of stand function
 
   //create a check who won function
+  let playerCardValue = 0; //initial value of players cards starts at 0
+  let pirateCardValue = 0; //initial value of pirate cards starts at 0
+
+  const checkForBlackjack = () => {
+    playerCardValue = 0;
+    for(let card of playerCards){ //go through each of the values from the player array and add it together to get the total player card value
+      playerCardValue += card.value;
+    }
+    if(playerCardValue === 21){
+      console.log("You got a BlackJack!!");
+    } else {
+      checkForBust();
+    }
+  }; //end of check for blackjack
+
+  const checkForBust = () => {
+    playerCardValue = 0;
+    for(let card of playerCards){ //go through each of the values from the player array and add it together to get the total player card value
+      playerCardValue += card.value;
+    }
+    if(playerCardValue > 21){
+      console.log("BUST");
+    }
+  }; //end of check for bust
+
   const checkForWinner = () => {
-    let playerCardValue = 0; //initial value of players cards starts at 0
-    let pirateCardValue = 0; //initial value of pirate cards starts at 0
+    playerCardValue = 0;
+    pirateCardValue = 0;
     //add the players cards
     for(let card of playerCards){ //go through each of the values from the player array and add it together to get the total player card value
       playerCardValue += card.value;
     }
       // console.log(playerCardValue); //logs the total player card value
 
+      //***I only want to add pirate cards once the player has hit stand
     for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
       pirateCardValue += card.value;
     }
       // console.log(pirateCardValue);
 
       //after dealing, check the two cards of the player to see if they are 21.
-    if(playerCardValue > 21){
-      console.log("BUST");
-
-    } else if(pirateCardValue > 21){
+    if(pirateCardValue > 21){
       console.log("Player Wins");
 
     } else if(playerCardValue > pirateCardValue){
@@ -146,7 +188,6 @@ $(() => { //start of on ready function
 
     } else {
       console.log("Dealer wins");
-
     }
       //if they are not,  wait for button click
       //if they click HIT, then deal another card and check again,
@@ -178,7 +219,7 @@ $(() => { //start of on ready function
     pirateCards=[];
     $("#player-cards").children().remove();
     $("#pirate-cards").children().remove();
-    deck1 = new deckOfCards();
+    // deck1 = new deckOfCards(); //restart the deck to be fresh. If don't want this can remove. Ideally you would just restart with whatever cards are left so keeping this out of the function
   }; //end of restart function
 
   //all of the onclick functions:
