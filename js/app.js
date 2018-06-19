@@ -112,9 +112,6 @@ $(() => { //start of on ready function
     $("#back-of-card").remove(); //remove the back of the card
     $("#pirate-cards").children("div:first").children().show(); //shows the first element once the stand button is clicked
 
-
-
-
     //if they are standing, then need to go check the dealers hand and determine if they need more cards...
 
     //if under 17... make a function here to checkDealersHand??
@@ -160,7 +157,7 @@ $(() => { //start of on ready function
 
   //when a new game is started, create a new deckOfCards and shuffle before playing.
   //order will be create deck, shuffle, then deal. Deal will only deal the beginning to start until a button is click.
-  const deck1 = new deckOfCards();
+  let deck1 = new deckOfCards();
   const start = () => {
     deck1.shuffle();
     console.log(deck1.deck);
@@ -181,6 +178,7 @@ $(() => { //start of on ready function
     pirateCards=[];
     $("#player-cards").children().remove();
     $("#pirate-cards").children().remove();
+    deck1 = new deckOfCards();
   }; //end of restart function
 
   //all of the onclick functions:
