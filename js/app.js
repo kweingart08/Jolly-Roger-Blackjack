@@ -5,15 +5,35 @@ $(() => { //start of on ready function
   let playerBoatPoints = 0;
   let pirateBoatPoints = 0;
 
+  const alertPlayerWinsHand = () => {
+    alert("YOU WON that hand and move forward");
+  }
+
+  const alertPirateWinsHand = () => {
+    alert("Pirate moves forward this time");
+  }
+
+  const playerMakesItToLand = () => {
+    alert("You win it all and make it to land!");
+    restart();
+  }
+
+  const pirateMakesItToLand = () => {
+    alert("The Pirate won this time");
+    restart();
+  }
+
   const checkTotalPoints = () => { //boats are translating 100% of the size of the boat. therefore since the boat picture is 20% of the whole and water is 80%. Need to get to 500 points to win
     console.log(playerBoatPoints);
     console.log(pirateBoatPoints);
     if(playerBoatPoints >= 500){
+      setTimeout(playerMakesItToLand,3000);
       console.log("PLAYER WINS");
       console.log(playerBoatPoints);
       //end of game
     }
     else if(pirateBoatPoints >= 500){
+      setTimeout(pirateMakesItToLand, 3000);
       console.log("PIRATE WINS");
       console.log(pirateBoatPoints);
     }
@@ -174,6 +194,7 @@ $(() => { //start of on ready function
     }
     if(playerCardValue === 21){
       console.log("You got a BlackJack!!");
+      setTimeout(alertPlayerWinsHand, 3000);
       //NEED TO FREEZE HIT AND STAND BUTTONS - MUST PRESS DEAL ME IN TO DEAL AGAIN
       $(".decision").hide();
       playerBoatPoints += 100;
@@ -194,6 +215,7 @@ $(() => { //start of on ready function
     }
     if(playerCardValue > 21){
       console.log("BUST");
+      setTimeout(alertPirateWinsHand, 3000);
       $(".decision").hide();
       pirateBoatPoints += 100;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
@@ -221,6 +243,7 @@ $(() => { //start of on ready function
       //after dealing, check the two cards of the player to see if they are 21.
     if(pirateCardValue > 21){
       console.log("Player Wins");
+      setTimeout(alertPlayerWinsHand, 3000);
       $(".decision").hide();
       playerBoatPoints += 100;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
@@ -230,6 +253,7 @@ $(() => { //start of on ready function
 
     } else if(playerCardValue > pirateCardValue){
       console.log("Player Wins");
+      setTimeout(alertPlayerWinsHand, 3000);
       $(".decision").hide();
       playerBoatPoints += 100;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
@@ -239,6 +263,7 @@ $(() => { //start of on ready function
 
     } else {
       console.log("Dealer wins");
+      setTimeout(alertPirateWinsHand, 3000);
       $(".decision").hide();
       pirateBoatPoints += 100;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
