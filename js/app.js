@@ -178,6 +178,8 @@ $(() => { //start of on ready function
       $(".decision").hide();
       playerBoatPoints += 100;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
+      $("#player-boat").css("transition-duration", "3s");
+      $("#player-boat").css("transition-timing-function", "ease");
       checkTotalPoints();
 
     } else {
@@ -195,6 +197,8 @@ $(() => { //start of on ready function
       $(".decision").hide();
       pirateBoatPoints += 100;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
+      $("#pirate-boat").css("transition-duration", "3s");
+      $("#pirate-boat").css("transition-timing-function", "ease");
       checkTotalPoints();
     }
   }; //end of check for bust
@@ -220,6 +224,8 @@ $(() => { //start of on ready function
       $(".decision").hide();
       playerBoatPoints += 100;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
+      $("#player-boat").css("transition-duration", "3s");
+      $("#player-boat").css("transition-timing-function", "ease");
       checkTotalPoints();
 
     } else if(playerCardValue > pirateCardValue){
@@ -227,6 +233,8 @@ $(() => { //start of on ready function
       $(".decision").hide();
       playerBoatPoints += 100;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
+      $("#player-boat").css("transition-duration", "3s");
+      $("#player-boat").css("transition-timing-function", "ease");
       checkTotalPoints();
 
     } else {
@@ -234,6 +242,8 @@ $(() => { //start of on ready function
       $(".decision").hide();
       pirateBoatPoints += 100;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
+      $("#pirate-boat").css("transition-duration", "3s");
+      $("#pirate-boat").css("transition-timing-function", "ease");
       checkTotalPoints();
 
     }
