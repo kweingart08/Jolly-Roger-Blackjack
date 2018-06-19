@@ -96,6 +96,10 @@ $(() => { //start of on ready function
   //function for hit
   const hit = () =>{
     console.log("i work");
+
+    deck1.dealCardsPlayer();
+
+
     //use deck1.shift() to get the next card...
     //need to go back and deal one card. // create a method for dealing after initial deal?
     checkForWinner(); //check if 21 or above 21 (bust), but if it isn's 21 or above and they haven't chosen stand yet, then get out of check winner...
@@ -156,8 +160,8 @@ $(() => { //start of on ready function
 
   //when a new game is started, create a new deckOfCards and shuffle before playing.
   //order will be create deck, shuffle, then deal. Deal will only deal the beginning to start until a button is click.
+  const deck1 = new deckOfCards();
   const start = () => {
-    const deck1 = new deckOfCards();
     deck1.shuffle();
     console.log(deck1.deck);
     deck1.dealCardsPlayer();
