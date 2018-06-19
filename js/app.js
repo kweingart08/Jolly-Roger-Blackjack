@@ -115,6 +115,11 @@ $(() => { //start of on ready function
 
     deck1.dealCardsPlayer();
 
+    //*******check for animation to work
+    $("#player-boat").css("transform", "translate(50px)");
+    // *******move this animation where needed when winner happens.
+    //Create variables to keep track of "Point" which will equal the amount of px moved. Once player points or moved pixels is equal to X then declare official winner ***this is the end state. All others are just winners of hands and will move boats. Not overall winners 
+
 
     //use deck1.shift() to get the next card...
     //need to go back and deal one card. // create a method for dealing after initial deal?
