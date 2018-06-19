@@ -7,6 +7,9 @@ $(() => { //start of on ready function
   let playerCards = [];
   let pirateCards = [];
 
+  let playerBoatPoints = 0;
+  let pirateBoatPoints = 0;
+
   //create a deck of cards and make a shuffle function
   class deckOfCards{ //class deck of cards
     constructor(){ //constructor is made of the suits and faces and an array of all of the cards
@@ -111,18 +114,15 @@ $(() => { //start of on ready function
 
   //function for hit
   const hit = () =>{
-    console.log("i work");
+    // console.log("i work");
 
     deck1.dealCardsPlayer();
 
     //*******check for animation to work
-    $("#player-boat").css("transform", "translate(50px)");
+    // $("#player-boat").css("transform", "translate(50px)");
     // *******move this animation where needed when winner happens.
-    //Create variables to keep track of "Point" which will equal the amount of px moved. Once player points or moved pixels is equal to X then declare official winner ***this is the end state. All others are just winners of hands and will move boats. Not overall winners 
+    //Create variables to keep track of "Point" which will equal the amount of px moved. Once player points or moved pixels is equal to X then declare official winner ***this is the end state. All others are just winners of hands and will move boats. Not overall winners
 
-
-    //use deck1.shift() to get the next card...
-    //need to go back and deal one card. // create a method for dealing after initial deal?
     checkForBlackjack(); //check if 21 or above 21 (bust), but if it isn's 21 or above and they haven't chosen stand yet, then get out of check winner...
   }; //end of hit function
 
@@ -166,6 +166,9 @@ $(() => { //start of on ready function
     }
     if(playerCardValue === 21){
       console.log("You got a BlackJack!!");
+      playerBoatPoints += 100;
+      $("#player-boat").css("transform", "translate(" + playerBoatPoints + "px)");
+
     } else {
       checkForBust();
     }
@@ -178,6 +181,8 @@ $(() => { //start of on ready function
     }
     if(playerCardValue > 21){
       console.log("BUST");
+      pirateBoatPoints += 100;
+      $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "px)");
     }
   }; //end of check for bust
 
@@ -199,12 +204,18 @@ $(() => { //start of on ready function
       //after dealing, check the two cards of the player to see if they are 21.
     if(pirateCardValue > 21){
       console.log("Player Wins");
+      playerBoatPoints += 100;
+      $("#player-boat").css("transform", "translate(" + playerBoatPoints + "px)");
 
     } else if(playerCardValue > pirateCardValue){
       console.log("Player Wins");
+      playerBoatPoints += 100;
+      $("#player-boat").css("transform", "translate(" + playerBoatPoints + "px)");
 
     } else {
       console.log("Dealer wins");
+      pirateBoatPoints += 100;
+      $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "px)");
     }
       //if they are not,  wait for button click
       //if they click HIT, then deal another card and check again,
@@ -237,6 +248,10 @@ $(() => { //start of on ready function
     $("#player-cards").children().remove();
     $("#pirate-cards").children().remove();
     // deck1 = new deckOfCards(); //restart the deck to be fresh. If don't want this can remove. Ideally you would just restart with whatever cards are left so keeping this out of the function
+
+    //***NEED TO ADD A translate css function to move all boats back to the beginning. Possibly do a negative of whatever the player points is at. *****
+
+
   }; //end of restart function
 
   //all of the onclick functions:
