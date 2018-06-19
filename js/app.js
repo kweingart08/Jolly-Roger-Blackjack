@@ -81,7 +81,12 @@ class deckOfCards{ //class deck of cards
     const $pirateImage = $("<img>").attr("src", "images/cards/" + currentPirateCard.face + currentPirateCard.suit + ".png").addClass("card-images"); //need to update this source
     $("#pirate-cards").children("div:last").append($pirateImage);
 
-    // const $images = $("<img>").attr("src", "images/cards/" + pirateCards.face + pirateCards.suit + ".png").addClass("card-images");
+    if(!pirateCards[1]){ //if there isn't anything in the second element of the array, hide the first one. //show after the stand
+      $pirateImage.hide();
+      //show the back of the card
+      const $backImage = $("<img>").attr("src", "images/cards/back-of-card.png").addClass("card-images").attr("id", "back-of-card");
+      $pirateCardsDiv.append($backImage);
+    }
 
 
   }
@@ -99,7 +104,15 @@ const hit = () =>{
 //function for stay
 const stand = () => {
   console.log("i work too");
+  //need to show the first pirate element
+  $("#back-of-card").remove(); //remove the back of the card
+  $("#pirate-cards").children("div:first").children().show(); //shows the first element once the stand button is clicked
+
+  
+
+
   //if they are standing, then need to go check the dealers hand and determine if they need more cards...
+
   //if under 17... make a function here to checkDealersHand??
 
   checkForWinner();
