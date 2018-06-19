@@ -27,13 +27,13 @@ $(() => { //start of on ready function
   const checkTotalPoints = () => { //boats are translating 100% of the size of the boat. therefore since the boat picture is 20% of the whole and water is 80%. Need to get to 500 points to win
     console.log(playerBoatPoints);
     console.log(pirateBoatPoints);
-    if(playerBoatPoints >= 500){
+    if(playerBoatPoints >= 700){
       setTimeout(playerMakesItToLand,2000);
       console.log("PLAYER WINS");
       console.log(playerBoatPoints);
       //end of game
     }
-    else if(pirateBoatPoints >= 500){
+    else if(pirateBoatPoints >= 700){
       setTimeout(pirateMakesItToLand, 2000);
       console.log("PIRATE WINS");
       console.log(pirateBoatPoints);
@@ -198,7 +198,7 @@ $(() => { //start of on ready function
       setTimeout(alertPlayerWinsHand, 2000);
       //NEED TO FREEZE HIT AND STAND BUTTONS - MUST PRESS DEAL ME IN TO DEAL AGAIN
       $(".decision").hide();
-      playerBoatPoints += 100;
+      playerBoatPoints += 120;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
       $("#player-boat").css("transition-duration", "2s");
       $("#player-boat").css("transition-timing-function", "ease");
@@ -218,7 +218,7 @@ $(() => { //start of on ready function
       console.log("BUST");
       setTimeout(alertPirateWinsHand, 2000);
       $(".decision").hide();
-      pirateBoatPoints += 100;
+      pirateBoatPoints += 120;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
       $("#pirate-boat").css("transition-duration", "2s");
       $("#pirate-boat").css("transition-timing-function", "ease");
@@ -246,7 +246,7 @@ $(() => { //start of on ready function
       console.log("Player Wins");
       setTimeout(alertPlayerWinsHand, 2000);
       $(".decision").hide();
-      playerBoatPoints += 100;
+      playerBoatPoints += 120;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
       $("#player-boat").css("transition-duration", "2s");
       $("#player-boat").css("transition-timing-function", "ease");
@@ -256,7 +256,7 @@ $(() => { //start of on ready function
       console.log("Player Wins");
       setTimeout(alertPlayerWinsHand, 2000);
       $(".decision").hide();
-      playerBoatPoints += 100;
+      playerBoatPoints += 120;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
       $("#player-boat").css("transition-duration", "2s");
       $("#player-boat").css("transition-timing-function", "ease");
@@ -266,7 +266,7 @@ $(() => { //start of on ready function
       console.log("Dealer wins");
       setTimeout(alertPirateWinsHand, 2000);
       $(".decision").hide();
-      pirateBoatPoints += 100;
+      pirateBoatPoints += 120;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
       $("#pirate-boat").css("transition-duration", "2s");
       $("#pirate-boat").css("transition-timing-function", "ease");
