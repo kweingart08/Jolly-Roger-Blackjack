@@ -174,6 +174,8 @@ $(() => { //start of on ready function
     }
     if(playerCardValue === 21){
       console.log("You got a BlackJack!!");
+      //NEED TO FREEZE HIT AND STAND BUTTONS - MUST PRESS DEAL ME IN TO DEAL AGAIN
+      $(".decision").hide();
       playerBoatPoints += 100;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
       checkTotalPoints();
@@ -190,6 +192,7 @@ $(() => { //start of on ready function
     }
     if(playerCardValue > 21){
       console.log("BUST");
+      $(".decision").hide();
       pirateBoatPoints += 100;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
       checkTotalPoints();
@@ -214,18 +217,21 @@ $(() => { //start of on ready function
       //after dealing, check the two cards of the player to see if they are 21.
     if(pirateCardValue > 21){
       console.log("Player Wins");
+      $(".decision").hide();
       playerBoatPoints += 100;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
       checkTotalPoints();
 
     } else if(playerCardValue > pirateCardValue){
       console.log("Player Wins");
+      $(".decision").hide();
       playerBoatPoints += 100;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
       checkTotalPoints();
 
     } else {
       console.log("Dealer wins");
+      $(".decision").hide();
       pirateBoatPoints += 100;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
       checkTotalPoints();
@@ -244,6 +250,8 @@ $(() => { //start of on ready function
   const start = () => {
     playerCards=[];
     pirateCards=[];
+    $(".decision").show();
+
     $("#player-cards").children().remove();
     $("#pirate-cards").children().remove();
 
@@ -270,11 +278,13 @@ $(() => { //start of on ready function
 
     //***NEED TO ADD A translate css function to move all boats back to the beginning. Possibly do a negative of whatever the player points is at. *****
 
-    $("#player-boat").css("transform", "translate(-" + playerBoatPoints/2 + "%)");
-    $("#pirate-boat").css("transform", "translate(-" + playerBoatPoints/2 + "%)");
+    $("#player-boat").css("transform", "none");
+    $("#pirate-boat").css("transform", "none");
 
     pirateBoatPoints = 0;
     playerBoatPoints = 0;
+
+    $(".decision").show();
 
   }; //end of restart function
 
