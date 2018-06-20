@@ -135,13 +135,17 @@ $(() => { //start of on ready function
     }
   }
 
-  // const newDeckofCards = () => { //create a new deck of cards
-  //   deck1 = new deckOfCards();
-  //   deck1.shuffle();
-  // };
+  const newDeckofCards = () => { //create a new deck of cards
+    deck1 = new deckOfCards();
+    deck1.shuffle();
+  };
 
   //function for hit
   const hit = () =>{
+
+    if(deck1.deck.length < 1) {
+      newDeckofCards();
+    }; //make sure there are enough cards to deal, if no more cards, make new deck and shuffle
     deck1.dealCardsPlayer(); //give player another card
     checkForBust(); //check if above 21 (bust)
   }; //end of hit function
@@ -160,12 +164,18 @@ $(() => { //start of on ready function
     }
     //if under 17 need to give the pirate another card.
       if(pirateCardValue < 17){
+        if(deck1.deck.length < 1) {
+          newDeckofCards();
+        };
         deck1.dealCardsPirate();
         pirateCardValue = 0;
         for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
         pirateCardValue += card.value;
         }
           if(pirateCardValue < 17){
+            if(deck1.deck.length < 1) {
+              newDeckofCards();
+            };
             deck1.dealCardsPirate();
             pirateCardValue = 0;
             for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
@@ -173,6 +183,9 @@ $(() => { //start of on ready function
             }
 
             if(pirateCardValue < 17){
+              if(deck1.deck.length < 1) {
+                newDeckofCards();
+              };
               deck1.dealCardsPirate();
             }
             checkForWinner();
