@@ -349,7 +349,9 @@ $(() => { //start of on ready function
       playerBoatPoints = 0;
 
       $(".decision").hide();
+      $("#status").text("");
     }
+    $("#lets-play").hide();
   }
 
   const restart = () => {
@@ -368,6 +370,8 @@ $(() => { //start of on ready function
       playerBoatPoints = 0;
 
       $(".decision").hide();
+      $("#lets-play").show();
+      $("#status").text("");
     }
   }; //end of restart function
 
