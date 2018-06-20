@@ -159,6 +159,7 @@
 h1 {
   font-family: 'Permanent Marker', cursive;
   font-size: 40px;
+  margin-top: 0;
 }
 
 #lets-play {
@@ -205,4 +206,69 @@ h1 {
 #credits {
   font-size: 10px;
   text-align: right;
+}
+
+
+/* modal styles  */
+#modal {
+	background-color: rgba(0,0,0,0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	overflow: auto;
+	display: block;
+}
+
+#modal-textbox {
+	background-color: black;
+  color: white;
+	height: 350px;
+	width: 550px;
+	border-radius: 5px;
+	padding: 2%;
+	line-height: 120%;
+	margin: 150px auto;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+	font-family: Arial;
+}
+
+#modal-footer {
+	text-align: right;
+}
+
+#modal-title {
+	padding-bottom: 15px;
+  font-size: 28px;
+  text-decoration: underline;
+	font-family: Tahoma;
+}
+
+.modal-buttons {
+	padding: 14px 18px;
+	background-color: #677996;
+	border: none;
+	outline: none;
+	border-radius: 3px;
+	color: white;
+	font-family: 'Arial';
+	cursor: pointer;
+}
+
+#quick {
+  font-size: 22px;
+  font-weight: bold;
+  color: #FF530D;
+}
+
+#goal {
+  color: #43C3FF;
+  font-size: 18px;
+}
+
+#modal-textbox p {
+  font-size: 18px;
+  line-height: 20px;
 }

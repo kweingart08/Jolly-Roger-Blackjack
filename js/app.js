@@ -334,11 +334,36 @@ $(() => { //start of on ready function
 
   $(".decision").hide();
 
+  //Grabbing About the Game button
+  const $openBtn = $("#openModal");
+  //Grabbing the modal element
+  const $modal = $("#modal");
+  //Grabbing the close button
+  const $closeBtn = $("#close");
+  //Event Handlers
+  const openModal = () => {
+    $modal.css("display", "block");
+    //could also use jquery .show()
+  }
+  const closeModal = () => {
+    $modal.css("display", "none");
+    //could also use jquery .hide()
+  }
+
+
   //all of the onclick functions:
   $("#lets-play").on("click", start); //if start is clicked, run start function
   $("#hit").on("click", hit); //if the hit button is clicked, run the hit function
   $("#stand").on("click", stand); //if the stand button is clicked, run the stand function
   $("#restart").on("click", restart);
+  $openBtn.on("click", openModal);
+  $closeBtn.on("click", closeModal);
+
+
+
+
+
+
 
 
 }); //end of on ready function
