@@ -88,9 +88,9 @@ $(() => { //start of on ready function
     }
     dealCardsPlayer(){//deal the initial starting cards
       //make sure there are enough cards to deal, if no more cards, make new deck and shuffle
-      if(this.deck.length < 1) {
-        newDeckofCards();
-      };
+      // if(this.deck.length < 1) {
+      //   newDeckofCards();
+      // };
 
       //when these are created , make a div and an image to put the proper one there.
       const $playerCardDiv = $("<div>").addClass("dealt-card");
@@ -110,9 +110,9 @@ $(() => { //start of on ready function
     }
     dealCardsPirate(){
 
-      if(this.deck.length < 1) {
-        newDeckofCards();
-      }; //make sure there are enough cards to deal, if no more cards, make new deck and shuffle
+      // if(this.deck.length < 1) {
+      //   newDeckofCards();
+      // }; //make sure there are enough cards to deal, if no more cards, make new deck and shuffle
 
       const $pirateCardsDiv = $("<div>").addClass("dealt-card");
       $("#pirate-cards").append($pirateCardsDiv);
@@ -135,10 +135,10 @@ $(() => { //start of on ready function
     }
   }
 
-  const newDeckofCards = () => { //create a new deck of cards
-    deck1 = new deckOfCards();
-    deck1.shuffle();
-  };
+  // const newDeckofCards = () => { //create a new deck of cards
+  //   deck1 = new deckOfCards();
+  //   deck1.shuffle();
+  // };
 
   //function for hit
   const hit = () =>{
@@ -197,7 +197,6 @@ $(() => { //start of on ready function
       $("#back-of-card").remove(); //remove the back of the card
       $("#pirate-cards").children("div:first").children().show(); //shows the first element once the stand button is clicked
 
-      //if they are standing, then need to go check the dealers hand and determine if they need more cards...
       pirateCardValue = 0;
       for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
         pirateCardValue += card.value;
@@ -231,8 +230,7 @@ $(() => { //start of on ready function
     }
     if(playerCardValue > 21){
       status("bust");
-      // console.log("BUST");
-      // setTimeout(alertPirateWinsHand, 2000);
+
       $(".decision").hide();
       pirateBoatPoints += 150;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
@@ -249,19 +247,14 @@ $(() => { //start of on ready function
     for(let card of playerCards){ //go through each of the values from the player array and add it together to get the total player card value
       playerCardValue += card.value;
     }
-      // console.log(playerCardValue); //logs the total player card value
 
-      //***I only want to add pirate cards once the player has hit stand
     for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
       pirateCardValue += card.value;
     }
-      // console.log(pirateCardValue);
 
-      //after dealing, check the two cards of the player to see if they are 21.
     if(pirateCardValue > 21){
       status("player");
-      // console.log("Player Wins");
-      // setTimeout(alertPlayerWinsHand, 2000);
+
       $(".decision").hide();
       playerBoatPoints += 150;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
@@ -271,8 +264,7 @@ $(() => { //start of on ready function
 
     } else if(playerCardValue > pirateCardValue){
       status("player");
-      // console.log("Player Wins");
-      // setTimeout(alertPlayerWinsHand, 2000);
+
       $(".decision").hide();
       playerBoatPoints += 150;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
@@ -282,14 +274,12 @@ $(() => { //start of on ready function
 
     } else if(playerCardValue === pirateCardValue){
       status("push");
-      // console.log("It's a PUSH. Nobody moves");
-      // setTimeout(alertPush, 1000);
+
       $(".decision").hide();
 
     } else {
       status("pirate");
-      // console.log("Dealer wins");
-      // setTimeout(alertPirateWinsHand, 2000);
+
       $(".decision").hide();
       pirateBoatPoints += 150;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
@@ -298,16 +288,13 @@ $(() => { //start of on ready function
       checkTotalPoints();
 
     }
-      //if they are not,  wait for button click
-      //if they click HIT, then deal another card and check again,
 
-    //if they click STAY, then flip over the pirates card. Check if over 21 (bust, ...
-    //need to check if the sum of the two cards is 21
   }; //end of winner function
 
   //when a new game is started, create a new deckOfCards and shuffle before playing.
   //order will be create deck, shuffle, then deal. Deal will only deal the beginning to start until a button is click.
   let deck1 = new deckOfCards();
+
   const start = () => {
     playerCards=[];
     pirateCards=[];
@@ -324,12 +311,7 @@ $(() => { //start of on ready function
     deck1.dealCardsPirate();
     deck1.dealCardsPlayer();
     deck1.dealCardsPirate();
-    //these are NOT working below:
-    // setTimeout(deck1.dealCardsPirate, 500);
-    // setTimeout(deck1.dealCardsPlayer, 1000);
-    // setTimeout(deck1.dealCardsPirate, 2000);
-    console.log(playerCards);
-    console.log(pirateCards);
+
   }; //end of start function
 
   const restart = () => {
