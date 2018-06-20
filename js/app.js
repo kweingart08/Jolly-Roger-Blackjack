@@ -30,7 +30,7 @@ $(() => { //start of on ready function
       setTimeout(playAgain, 2000);
     }
     else if(pirateBoatPoints >= 900){
-      $("#status").text("Oh No! The pirate made it to last first. YOU LOSE!");
+      $("#status").text("Oh No! The pirate made it to land first. YOU LOSE!");
       setTimeout(playAgain, 2000);
     }
   }; //end of checking total points
@@ -334,29 +334,44 @@ $(() => { //start of on ready function
   }; //end of start function
 
   const playAgain = () => {
-    const playMore = prompt("Do you want to play again?", "yes/no");
-    if(playMore === "yes"){
-      playerCards=[];
-      pirateCards=[];
-      $("#player-cards").children().remove();
-      $("#pirate-cards").children().remove();
-      deck1 = new deckOfCards(); //restarting creates a fresh deck of cards
+    // const playMore = prompt("Do you want to play again?", "yes/no");
+    // if(playMore === "yes"){
 
-      $("#player-boat").css("transform", "none");
-      $("#pirate-boat").css("transform", "none");
-
-      pirateBoatPoints = 0;
-      playerBoatPoints = 0;
-
-      $(".decision").hide();
-      $("#status").text("");
-    }
+      $("#restart").text("Play Again");
+    //   playerCards=[];
+    //   pirateCards=[];
+    //   $("#player-cards").children().remove();
+    //   $("#pirate-cards").children().remove();
+    //   deck1 = new deckOfCards(); //restarting creates a fresh deck of cards
+    //
+    //   $("#player-boat").css("transform", "none");
+    //   $("#pirate-boat").css("transform", "none");
+    //
+    //   pirateBoatPoints = 0;
+    //   playerBoatPoints = 0;
+    //
+    //   $(".decision").hide();
+    //   $("#status").text("");
+    // // }
     $("#lets-play").hide();
   }
 
   const restart = () => {
-    const youSure = prompt("Are you sure you want to start over? This will clear everything", "yes/no");
-    if(youSure === "yes"){
+    //if text says "start over.."
+    if($("#restart").text() === "Start Over"){
+      const youSure = prompt("Are you sure you want to start over? This will clear everything", "yes/no");
+      if(youSure === "no"){
+        return;
+      }
+    }
+
+    //if text says "Play Again.. "
+    // else if($("#restart").text() === "Play Again"){
+    else {
+
+    // $("#restart").text("Start Over");
+    // const youSure = prompt("Are you sure you want to start over? This will clear everything", "yes/no");
+    // if(youSure === "yes"){
       playerCards=[];
       pirateCards=[];
       $("#player-cards").children().remove();
@@ -372,6 +387,8 @@ $(() => { //start of on ready function
       $(".decision").hide();
       $("#lets-play").show();
       $("#status").text("");
+      $("#restart").text("Start Over");
+    // }
     }
   }; //end of restart function
 
