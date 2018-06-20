@@ -334,63 +334,47 @@ $(() => { //start of on ready function
   }; //end of start function
 
   const playAgain = () => {
-    // const playMore = prompt("Do you want to play again?", "yes/no");
-    // if(playMore === "yes"){
+    $("#restart").text("Play Again");
 
-      $("#restart").text("Play Again");
-    //   playerCards=[];
-    //   pirateCards=[];
-    //   $("#player-cards").children().remove();
-    //   $("#pirate-cards").children().remove();
-    //   deck1 = new deckOfCards(); //restarting creates a fresh deck of cards
-    //
-    //   $("#player-boat").css("transform", "none");
-    //   $("#pirate-boat").css("transform", "none");
-    //
-    //   pirateBoatPoints = 0;
-    //   playerBoatPoints = 0;
-    //
-    //   $(".decision").hide();
-    //   $("#status").text("");
-    // // }
     $("#lets-play").hide();
   }
 
   const restart = () => {
-    //if text says "start over.."
+
     if($("#restart").text() === "Start Over"){
       const youSure = prompt("Are you sure you want to start over? This will clear everything", "yes/no");
       if(youSure === "no"){
         return;
       }
+      else if(youSure === "yes"){
+        startOver();
+      }
     }
 
-    //if text says "Play Again.. "
-    // else if($("#restart").text() === "Play Again"){
-    else {
-
-    // $("#restart").text("Start Over");
-    // const youSure = prompt("Are you sure you want to start over? This will clear everything", "yes/no");
-    // if(youSure === "yes"){
-      playerCards=[];
-      pirateCards=[];
-      $("#player-cards").children().remove();
-      $("#pirate-cards").children().remove();
-      deck1 = new deckOfCards(); //restarting creates a fresh deck of cards
-
-      $("#player-boat").css("transform", "none");
-      $("#pirate-boat").css("transform", "none");
-
-      pirateBoatPoints = 0;
-      playerBoatPoints = 0;
-
-      $(".decision").hide();
-      $("#lets-play").show();
-      $("#status").text("");
-      $("#restart").text("Start Over");
-    // }
+    else if($("#restart").text() === "Play Again") {
+      startOver();
     }
   }; //end of restart function
+
+  const startOver = () => {
+    playerCards=[];
+    pirateCards=[];
+    $("#player-cards").children().remove();
+    $("#pirate-cards").children().remove();
+    deck1 = new deckOfCards(); //restarting creates a fresh deck of cards
+
+    $("#player-boat").css("transform", "none");
+    $("#pirate-boat").css("transform", "none");
+
+    pirateBoatPoints = 0;
+    playerBoatPoints = 0;
+
+    $(".decision").hide();
+    $("#lets-play").show();
+    $("#status").text("");
+    $("#restart").text("Start Over");
+  }; //end of start over
+
 
   $(".decision").hide();
 
