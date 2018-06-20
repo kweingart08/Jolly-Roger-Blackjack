@@ -24,16 +24,20 @@ $(() => { //start of on ready function
     restart();
   }
 
+  const alertPush = () => {
+    alert("No one moves. PUSH");
+  }
+
   const checkTotalPoints = () => { //boats are translating 100% of the size of the boat. therefore since the boat picture is 20% of the whole and water is 80%. Need to get to 500 points to win
     console.log(playerBoatPoints);
     console.log(pirateBoatPoints);
-    if(playerBoatPoints >= 700){
+    if(playerBoatPoints >= 900){
       setTimeout(playerMakesItToLand,2000);
       console.log("PLAYER WINS");
       console.log(playerBoatPoints);
       //end of game
     }
-    else if(pirateBoatPoints >= 700){
+    else if(pirateBoatPoints >= 900){
       setTimeout(pirateMakesItToLand, 2000);
       console.log("PIRATE WINS");
       console.log(pirateBoatPoints);
@@ -95,10 +99,10 @@ $(() => { //start of on ready function
     }
     dealCardsPlayer(){//deal the initial starting cards
       //create if statement, if there aren't any cards left, need to let deck1 = new deck and then shuffle again.
-      if(this.deck.length < 1) {
-        deck1 = new deckOfCards();
-        deck1.shuffle();
-      }; //make sure there are enough cards to deal, if no more cards, make new deck and shuffle
+      //make sure there are enough cards to deal, if no more cards, make new deck and shuffle
+      // if(this.deck.length < 1) {
+      //   newDeckofCards();
+      // };
 
       //when these are created , make a div and an image to put the proper one there.
       const $playerCardDiv = $("<div>").addClass("dealt-card");
@@ -125,10 +129,9 @@ $(() => { //start of on ready function
     }
     dealCardsPirate(){
       //create if statement, if there aren't any cards left, need to let deck1 = new deck and then shuffle again.
-      if(this.deck.length < 1) {
-        deck1 = new deckOfCards();
-        deck1.shuffle();
-      }; //make sure there are enough cards to deal, if no more cards, make new deck and shuffle
+      // if(this.deck.length < 1) {
+      //   newDeckofCards();
+      // }; //make sure there are enough cards to deal, if no more cards, make new deck and shuffle
 
       const $pirateCardsDiv = $("<div>").addClass("dealt-card");
       $("#pirate-cards").append($pirateCardsDiv);
@@ -151,6 +154,11 @@ $(() => { //start of on ready function
     }
   }
 
+  // function newDeckofCards(){
+  //   deck1 = new deckOfCards();
+  //   deck1.shuffle();
+  //   return deck1;
+  // };
 
   //function for hit
   const hit = () =>{
@@ -163,6 +171,7 @@ $(() => { //start of on ready function
 
   //function for stay
   const stand = () => {
+    checkForBust();
     // console.log("i work too");
     //need to show the first pirate element
     $("#back-of-card").remove(); //remove the back of the card
@@ -197,18 +206,32 @@ $(() => { //start of on ready function
   const checkForBlackjack = () => {
     //blackjack is if the first 2 cards are an ACE and a face card
     if((playerCards[0].value === 11 && playerCards[1].value === 10) || (playerCards[1].value === 11 && playerCards[0].value === 10)){
-      console.log("You got a BlackJack!!");
-      setTimeout(alertPlayerWinsHand, 2000);
-      //NEED TO FREEZE HIT AND STAND BUTTONS - MUST PRESS DEAL ME IN TO DEAL AGAIN
-      $(".decision").hide();
-      playerBoatPoints += 120;
-      $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
-      $("#player-boat").css("transition-duration", "2s");
-      $("#player-boat").css("transition-timing-function", "ease");
-      checkTotalPoints();
+      //need to check if pirate has blackjack
+      $("#back-of-card").remove(); //remove the back of the card
+      $("#pirate-cards").children("div:first").children().show(); //shows the first element once the stand button is clicked
 
-    } else {
-      checkForBust();
+      //if they are standing, then need to go check the dealers hand and determine if they need more cards...
+      pirateCardValue = 0;
+      for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
+        pirateCardValue += card.value;
+      }
+      //if under 17... make a function here to checkDealersHand?? and then give another card
+      if(pirateCardValue === 21){
+        console.log("It's a PUSH. Nobody moves");
+        setTimeout(alertPush, 1000);
+        $(".decision").hide();
+      } else {
+        console.log("You got a BlackJack!!");
+        console.log(pirateCardValue);
+        setTimeout(alertPlayerWinsHand, 2000);
+        //NEED TO FREEZE HIT AND STAND BUTTONS - MUST PRESS DEAL ME IN TO DEAL AGAIN
+        $(".decision").hide();
+        playerBoatPoints += 150;
+        $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
+        $("#player-boat").css("transition-duration", "2s");
+        $("#player-boat").css("transition-timing-function", "ease");
+        checkTotalPoints();
+        }
     }
   }; //end of check for blackjack
 
@@ -221,7 +244,7 @@ $(() => { //start of on ready function
       console.log("BUST");
       setTimeout(alertPirateWinsHand, 2000);
       $(".decision").hide();
-      pirateBoatPoints += 120;
+      pirateBoatPoints += 150;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
       $("#pirate-boat").css("transition-duration", "2s");
       $("#pirate-boat").css("transition-timing-function", "ease");
@@ -249,7 +272,7 @@ $(() => { //start of on ready function
       console.log("Player Wins");
       setTimeout(alertPlayerWinsHand, 2000);
       $(".decision").hide();
-      playerBoatPoints += 120;
+      playerBoatPoints += 150;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
       $("#player-boat").css("transition-duration", "2s");
       $("#player-boat").css("transition-timing-function", "ease");
@@ -259,7 +282,7 @@ $(() => { //start of on ready function
       console.log("Player Wins");
       setTimeout(alertPlayerWinsHand, 2000);
       $(".decision").hide();
-      playerBoatPoints += 120;
+      playerBoatPoints += 150;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
       $("#player-boat").css("transition-duration", "2s");
       $("#player-boat").css("transition-timing-function", "ease");
@@ -267,12 +290,14 @@ $(() => { //start of on ready function
 
     } else if(playerCardValue === pirateCardValue){
       console.log("It's a PUSH. Nobody moves");
+      setTimeout(alertPush, 1000);
+      $(".decision").hide();
 
     } else {
       console.log("Dealer wins");
       setTimeout(alertPirateWinsHand, 2000);
       $(".decision").hide();
-      pirateBoatPoints += 120;
+      pirateBoatPoints += 150;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
       $("#pirate-boat").css("transition-duration", "2s");
       $("#pirate-boat").css("transition-timing-function", "ease");
@@ -328,7 +353,7 @@ $(() => { //start of on ready function
       pirateBoatPoints = 0;
       playerBoatPoints = 0;
 
-      $(".decision").show();
+      $(".decision").hide();
     }
   }; //end of restart function
 
