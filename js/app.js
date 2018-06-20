@@ -95,7 +95,10 @@ $(() => { //start of on ready function
     }
     dealCardsPlayer(){//deal the initial starting cards
       //create if statement, if there aren't any cards left, need to let deck1 = new deck and then shuffle again.
-
+      if(this.deck.length < 1) {
+        deck1 = new deckOfCards();
+        deck1.shuffle();
+      }; //make sure there are enough cards to deal, if no more cards, make new deck and shuffle
 
       //when these are created , make a div and an image to put the proper one there.
       const $playerCardDiv = $("<div>").addClass("dealt-card");
@@ -122,7 +125,10 @@ $(() => { //start of on ready function
     }
     dealCardsPirate(){
       //create if statement, if there aren't any cards left, need to let deck1 = new deck and then shuffle again.
-
+      if(this.deck.length < 1) {
+        deck1 = new deckOfCards();
+        deck1.shuffle();
+      }; //make sure there are enough cards to deal, if no more cards, make new deck and shuffle
 
       const $pirateCardsDiv = $("<div>").addClass("dealt-card");
       $("#pirate-cards").append($pirateCardsDiv);
@@ -152,7 +158,7 @@ $(() => { //start of on ready function
 
     deck1.dealCardsPlayer();
 
-    checkForBlackjack(); //check if 21 or above 21 (bust), but if it isn's 21 or above and they haven't chosen stand yet, then get out of check winner...
+    checkForBust(); //check if 21 or above 21 (bust), but if it isn's 21 or above and they haven't chosen stand yet, then get out of check winner...
   }; //end of hit function
 
   //function for stay
@@ -189,11 +195,8 @@ $(() => { //start of on ready function
   let pirateCardValue = 0; //initial value of pirate cards starts at 0
 
   const checkForBlackjack = () => {
-    playerCardValue = 0;
-    for(let card of playerCards){ //go through each of the values from the player array and add it together to get the total player card value
-      playerCardValue += card.value;
-    }
-    if(playerCardValue === 21){
+    //blackjack is if the first 2 cards are an ACE and a face card
+    if((playerCards[0].value === 11 && playerCards[1].value === 10) || (playerCards[1].value === 11 && playerCards[0].value === 10)){
       console.log("You got a BlackJack!!");
       setTimeout(alertPlayerWinsHand, 2000);
       //NEED TO FREEZE HIT AND STAND BUTTONS - MUST PRESS DEAL ME IN TO DEAL AGAIN
@@ -261,6 +264,9 @@ $(() => { //start of on ready function
       $("#player-boat").css("transition-duration", "2s");
       $("#player-boat").css("transition-timing-function", "ease");
       checkTotalPoints();
+
+    } else if(playerCardValue === pirateCardValue){
+      console.log("It's a PUSH. Nobody moves");
 
     } else {
       console.log("Dealer wins");
