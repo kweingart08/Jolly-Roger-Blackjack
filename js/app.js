@@ -6,19 +6,19 @@ $(() => { //start of on ready function
   const status = (status) => {
     switch(status){
       case "player":
-        text = "YOU WON";
+        text = "You won that hand, and your boat moves forward!";
         break;
       case "player-blackjack":
-        text="YOU GOT A BLACKJACK";
+        text="WOOOHOO! YOU GOT A BLACKJACK, and your boat moves forward!";
         break;
       case "pirate":
-        text = "Pirate wins";
+        text = "Bummer. Pirate gets to move closer to land this time.";
         break;
       case "push":
-        text = "It's a push";
+        text = "The hands are the same. This is a push and no one advances.";
         break;
       case "bust":
-        text = "You busted. Pirate wins";
+        text = "Oh, shoot! You went over 21 and busted. Pirate wins this hand.";
         break;
     }
     $("#status").text(text);
@@ -26,10 +26,12 @@ $(() => { //start of on ready function
 
   const checkTotalPoints = () => { //check total points to see if they made it to the land yet
     if(playerBoatPoints >= 900){
-      $("#status").text("PLAYER WINS IT ALL");
+      $("#status").text("Yay! You made it to land before the Pirates. YOU WIN! Go warn the townspeople!");
+      setTimeout(playAgain, 2000);
     }
     else if(pirateBoatPoints >= 900){
-      $("#status").text("PIRATE WINS IT ALL");
+      $("#status").text("Oh No! The pirate made it to last first. YOU LOSE!");
+      setTimeout(playAgain, 2000);
     }
   }; //end of checking total points
 
@@ -309,6 +311,10 @@ $(() => { //start of on ready function
   let deck1 = new deckOfCards();
 
   const start = () => {
+    if(deck1.deck.length < 4) {//make sure there are enough cards to deal
+      newDeckofCards();
+    };
+
     playerCards=[];
     pirateCards=[];
     $(".decision").show();
@@ -327,6 +333,25 @@ $(() => { //start of on ready function
 
   }; //end of start function
 
+  const playAgain = () => {
+    const playMore = prompt("Do you want to play again?", "yes/no");
+    if(playMore === "yes"){
+      playerCards=[];
+      pirateCards=[];
+      $("#player-cards").children().remove();
+      $("#pirate-cards").children().remove();
+      deck1 = new deckOfCards(); //restarting creates a fresh deck of cards
+
+      $("#player-boat").css("transform", "none");
+      $("#pirate-boat").css("transform", "none");
+
+      pirateBoatPoints = 0;
+      playerBoatPoints = 0;
+
+      $(".decision").hide();
+    }
+  }
+
   const restart = () => {
     const youSure = prompt("Are you sure you want to start over? This will clear everything", "yes/no");
     if(youSure === "yes"){
@@ -335,8 +360,6 @@ $(() => { //start of on ready function
       $("#player-cards").children().remove();
       $("#pirate-cards").children().remove();
       deck1 = new deckOfCards(); //restarting creates a fresh deck of cards
-
-      //***NEED TO ADD A translate css function to move all boats back to the beginning. Possibly do a negative of whatever the player points is at. *****
 
       $("#player-boat").css("transform", "none");
       $("#pirate-boat").css("transform", "none");
