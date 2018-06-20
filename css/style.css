@@ -272,3 +272,9 @@ h1 {
   font-size: 18px;
   line-height: 20px;
 }
+
+#status {
+  font-family: Arial;
+  font-size: 20px;
+  border-bottom: 2px solid blue;
+}
