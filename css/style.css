@@ -1,5 +1,5 @@
 .container {
-  width: 85%;
+  width: 95%;
   margin: auto;
   text-align: center;
 }
@@ -26,7 +26,7 @@
 }
 
 .boat-picture {
-  width: 20%;
+  width: 15%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -34,12 +34,12 @@
 }
 
 .boat-image {
-  height: 60%;
-  width: 60%;
+  height: 70%;
+  width: 70%;
 }
 
 .water {
-  width: 80%;
+  width: 85%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -200,4 +200,9 @@ h1 {
 
 #hit:hover, #stand:hover {
   background: #97EBFA;
+}
+
+#credits {
+  font-size: 10px;
+  text-align: right;
 }
