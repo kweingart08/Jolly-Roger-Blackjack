@@ -6,41 +6,80 @@ $(() => { //start of on ready function
   let pirateBoatPoints = 0;
 
   //maybe make these alert boxes actual divs with Text that show and hide depending on the one.
-  const alertPlayerWinsHand = () => {
-    alert("YOU WON that hand and move forward");
+
+  const status = (status) => {
+    switch(status){
+      case "player":
+        text = "YOU WON";
+        break;
+      case "player-blackjack":
+        text="YOU GOT A BLACKJACK";
+        break;
+      case "pirate":
+        text = "Pirate wins";
+        break;
+      case "push":
+        text = "It's a push";
+        break;
+      case "bust":
+        text = "You busted. Pirate wins";
+        break;
+    }
+    $("#status").text(text);
   }
 
-  const alertPirateWinsHand = () => {
-    alert("Pirate moves forward this time");
-  }
+  // const finalStatus = (finalWinner) => {
+  //   switch(finalWinner){
+  //     case "player":
+  //       text = "player wins it all";
+  //       restart();
+  //       break;
+  //     case "pirate":
+  //       text = "pirate wins it all";
+  //       restart();
+  //       break;
+  //   }
+  //   $("#status").text(text);
+  // }
 
-  const playerMakesItToLand = () => {
-    alert("You win it all and make it to land!");
-    restart();
-  }
-
-  const pirateMakesItToLand = () => {
-    alert("The Pirate won this time");
-    restart();
-  }
-
-  const alertPush = () => {
-    alert("No one moves. PUSH");
-  }
+// alertPlayerWinsHand
+//     $("#status").text(currentStatus);
+//     alert("YOU WON that hand and move forward");
+//   }
+//
+//   const alertPirateWinsHand = () => {
+//     alert("Pirate moves forward this time");
+//   }
+//
+//   const playerMakesItToLand = () => {
+//     alert("You win it all and make it to land!");
+//     restart();
+//   }
+//
+//   const pirateMakesItToLand = () => {
+//     alert("The Pirate won this time");
+//     restart();
+//   }
+//
+//   const alertPush = () => {
+//     alert("No one moves. PUSH");
+//   }
 
   const checkTotalPoints = () => { //boats are translating 100% of the size of the boat. therefore since the boat picture is 20% of the whole and water is 80%. Need to get to 500 points to win
     console.log(playerBoatPoints);
     console.log(pirateBoatPoints);
     if(playerBoatPoints >= 900){
-      setTimeout(playerMakesItToLand,2000);
-      console.log("PLAYER WINS");
-      console.log(playerBoatPoints);
+      $("#status").text("PLAYER WINS IT ALL");
+      // setTimeout(playerMakesItToLand,2000);
+      // console.log("PLAYER WINS");
+      // console.log(playerBoatPoints);
       //end of game
     }
     else if(pirateBoatPoints >= 900){
-      setTimeout(pirateMakesItToLand, 2000);
-      console.log("PIRATE WINS");
-      console.log(pirateBoatPoints);
+      $("#status").text("PIRATE WINS IT ALL");
+      // setTimeout(pirateMakesItToLand, 2000);
+      // console.log("PIRATE WINS");
+      // console.log(pirateBoatPoints);
     }
   }; //end of checking total points
 
@@ -217,13 +256,15 @@ $(() => { //start of on ready function
       }
       //if under 17... make a function here to checkDealersHand?? and then give another card
       if(pirateCardValue === 21){
-        console.log("It's a PUSH. Nobody moves");
-        setTimeout(alertPush, 1000);
+        status("push");
+        // console.log("It's a PUSH. Nobody moves");
+        // setTimeout(alertPush, 1000);
         $(".decision").hide();
       } else {
-        console.log("You got a BlackJack!!");
-        console.log(pirateCardValue);
-        setTimeout(alertPlayerWinsHand, 2000);
+        status("player-blackjack");
+        // console.log("You got a BlackJack!!");
+        // console.log(pirateCardValue);
+        // setTimeout(alertPlayerWinsHand, 2000);
         //NEED TO FREEZE HIT AND STAND BUTTONS - MUST PRESS DEAL ME IN TO DEAL AGAIN
         $(".decision").hide();
         playerBoatPoints += 150;
@@ -241,8 +282,9 @@ $(() => { //start of on ready function
       playerCardValue += card.value;
     }
     if(playerCardValue > 21){
-      console.log("BUST");
-      setTimeout(alertPirateWinsHand, 2000);
+      status("bust");
+      // console.log("BUST");
+      // setTimeout(alertPirateWinsHand, 2000);
       $(".decision").hide();
       pirateBoatPoints += 150;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
@@ -269,8 +311,9 @@ $(() => { //start of on ready function
 
       //after dealing, check the two cards of the player to see if they are 21.
     if(pirateCardValue > 21){
-      console.log("Player Wins");
-      setTimeout(alertPlayerWinsHand, 2000);
+      status("player");
+      // console.log("Player Wins");
+      // setTimeout(alertPlayerWinsHand, 2000);
       $(".decision").hide();
       playerBoatPoints += 150;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
@@ -279,8 +322,9 @@ $(() => { //start of on ready function
       checkTotalPoints();
 
     } else if(playerCardValue > pirateCardValue){
-      console.log("Player Wins");
-      setTimeout(alertPlayerWinsHand, 2000);
+      status("player");
+      // console.log("Player Wins");
+      // setTimeout(alertPlayerWinsHand, 2000);
       $(".decision").hide();
       playerBoatPoints += 150;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
@@ -289,13 +333,15 @@ $(() => { //start of on ready function
       checkTotalPoints();
 
     } else if(playerCardValue === pirateCardValue){
-      console.log("It's a PUSH. Nobody moves");
-      setTimeout(alertPush, 1000);
+      status("push");
+      // console.log("It's a PUSH. Nobody moves");
+      // setTimeout(alertPush, 1000);
       $(".decision").hide();
 
     } else {
-      console.log("Dealer wins");
-      setTimeout(alertPirateWinsHand, 2000);
+      status("pirate");
+      // console.log("Dealer wins");
+      // setTimeout(alertPirateWinsHand, 2000);
       $(".decision").hide();
       pirateBoatPoints += 150;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
@@ -318,6 +364,8 @@ $(() => { //start of on ready function
     playerCards=[];
     pirateCards=[];
     $(".decision").show();
+    $("#status").text("");
+
 
     $("#player-cards").children().remove();
     $("#pirate-cards").children().remove();
