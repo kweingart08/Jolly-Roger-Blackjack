@@ -104,11 +104,11 @@ $(() => { //start of on ready function
       $("#player-cards").children("div:last").append($image);
       // $(".dealt-card").append($image);
 
-      if(playerCards[1] && (!playerCards[2])){ //if there is a second card out there
-        //check if 21
-        $("#lets-play").hide();
-        checkForBlackjack();
-      } //else wait for the hit or stand buttons to be clicked
+      // if(playerCards[1] && (!playerCards[2])){ //if there is a second card out there
+      //   //check if 21
+      //   $("#lets-play").hide();
+      //   checkForBlackjack();
+      // } //else wait for the hit or stand buttons to be clicked
     }
     dealCardsPirate(){
 
@@ -204,7 +204,7 @@ $(() => { //start of on ready function
   const checkForBlackjack = () => {
     //blackjack is if the first 2 cards are an ACE and a face card
     if((playerCards[0].value === 11 && playerCards[1].value === 10) || (playerCards[1].value === 11 && playerCards[0].value === 10)){
-      deck1.dealCardsPirate();
+      // deck1.dealCardsPirate();
       //need to check if pirate has blackjack
       $("#back-of-card").remove(); //remove the back of the card
       $("#pirate-cards").children("div:first").children().show(); //shows the first element once the stand button is clicked
@@ -214,6 +214,7 @@ $(() => { //start of on ready function
         pirateCardValue += card.value;
 
       }
+      console.log(pirateCardValue);
         if(pirateCardValue === 21){
         status("push");
         $(".decision").hide();
@@ -230,9 +231,9 @@ $(() => { //start of on ready function
         checkTotalPoints();
         }
     }
-    else {
-      deck1.dealCardsPirate();
-    }
+    // else {
+    //   deck1.dealCardsPirate();
+    // }
   }; //end of check for blackjack
 
   const checkForBust = () => {
@@ -314,11 +315,13 @@ $(() => { //start of on ready function
   //when a new game is started, create a new deckOfCards and shuffle before playing.
   //order will be create deck, shuffle, then deal. Deal will only deal the beginning to start until a button is click.
   let deck1 = new deckOfCards();
+  deck1.shuffle();
 
   const start = () => {
 
     if(deck1.deck.length < 4) {//make sure there are enough cards to deal
       newDeckofCards();
+      deck1.shuffle();
     };
 
     playerCards=[];
@@ -330,13 +333,16 @@ $(() => { //start of on ready function
     $("#player-cards").children().remove();
     $("#pirate-cards").children().remove();
 
-    deck1.shuffle();
+
     console.log(deck1.deck);
     deck1.dealCardsPlayer();
     deck1.dealCardsPirate();
     deck1.dealCardsPlayer();
-    // deck1.dealCardsPirate();
+    deck1.dealCardsPirate();
     // $("#lets-play").hide();
+
+    $("#lets-play").hide();
+    checkForBlackjack();
 
   }; //end of start function
 
