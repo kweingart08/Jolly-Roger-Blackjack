@@ -88,6 +88,8 @@ $(() => { //start of on ready function
   let deck1 = new deckOfCards(); //when starting a game, create deck of cards and shuffle
   deck1.shuffle();
   $(".decision").hide(); //don't show the decision button at the beginning.
+  let playerAce;
+  let pirateAce;
 
   //status function to change the text in the paragraph depending on who won the hand
   const status = (status) => {
@@ -208,10 +210,24 @@ $(() => { //start of on ready function
     checkForBust: () => {
       gameFunctions.checkPlayerCards();
       if(playerCardValue > 21){
-        status("bust");
-        gameFunctions.endOfHand();
-        gameFunctions.addPiratePoints();
-        gameFunctions.checkTotalPoints();
+        //if above 21, check for ace.
+        // playerAce = playerCards.some(gameFunctions.checkForAce);
+        playerAce = playerCards.some(x => x.value > 10); //find if some of the values are greater than 10
+
+        if(playerAce === false){
+          //if no ace, then bust
+          status("bust");
+          gameFunctions.endOfHand();
+          gameFunctions.addPiratePoints();
+          gameFunctions.checkTotalPoints();
+        }
+        else if(playerAce === true){
+          // find the first card that has a value greater than 10
+          const findCard = playerCards.find(x => x.value > 10);
+          console.log(findCard);
+          findCard.value = 1;
+          console.log(playerCards);
+        }
       }
     }, //end of check for bust function
 
