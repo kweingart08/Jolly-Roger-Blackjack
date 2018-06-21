@@ -33,7 +33,9 @@ $(() => { //start of on ready function
       $("#status").text("Oh No! The pirate made it to land first. YOU LOSE!");
       playAgain();
     }
+    else {
     $("#lets-play").show();
+    }
   }; //end of checking total points
 
   //create empty arrays for the player and pirates cards to be pushed to.
@@ -104,6 +106,7 @@ $(() => { //start of on ready function
 
       if(playerCards[1] && (!playerCards[2])){ //if there is a second card out there
         //check if 21
+        $("#lets-play").hide();
         checkForBlackjack();
       } //else wait for the hit or stand buttons to be clicked
     }
@@ -147,7 +150,7 @@ $(() => { //start of on ready function
 
   //function for stay
   const stand = () => {
-    checkForBust(); //make sure they don't have 2 Aces (this would be updated when Ace = 1 if functional)
+
     //need to show the first pirate element
     $("#back-of-card").remove(); //remove the back of the card
     $("#pirate-cards").children("div:first").children().show(); //shows the first element once the stand button is clicked
@@ -201,23 +204,25 @@ $(() => { //start of on ready function
   const checkForBlackjack = () => {
     //blackjack is if the first 2 cards are an ACE and a face card
     if((playerCards[0].value === 11 && playerCards[1].value === 10) || (playerCards[1].value === 11 && playerCards[0].value === 10)){
+      deck1.dealCardsPirate();
       //need to check if pirate has blackjack
       $("#back-of-card").remove(); //remove the back of the card
       $("#pirate-cards").children("div:first").children().show(); //shows the first element once the stand button is clicked
 
-      pirateCardValue = 0;
+      // pirateCardValue = pirateCards[0].value + pirateCards[1].value;//****index 1 is showing up as undefined.
       for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
         pirateCardValue += card.value;
+
       }
-      //if under 17... make a function here to checkDealersHand?? and then give another card
         if(pirateCardValue === 21){
         status("push");
         $(".decision").hide();
         $("#lets-play").show();
-        } else {
+        }
+        else {
         status("player-blackjack");
-
         $(".decision").hide();
+        $("#lets-play").show();
         playerBoatPoints += 150;
         $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
         $("#player-boat").css("transition-duration", "2s");
@@ -225,7 +230,9 @@ $(() => { //start of on ready function
         checkTotalPoints();
         }
     }
-    $("#lets-play").show();
+    else {
+      deck1.dealCardsPirate();
+    }
   }; //end of check for blackjack
 
   const checkForBust = () => {
@@ -256,8 +263,17 @@ $(() => { //start of on ready function
     for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
       pirateCardValue += card.value;
     }
+    if(playerCardValue > 21){
+      status("bust");
+      $(".decision").hide();
+      pirateBoatPoints += 150;
+      $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
+      $("#pirate-boat").css("transition-duration", "2s");
+      $("#pirate-boat").css("transition-timing-function", "ease");
+      checkTotalPoints();
+    }
 
-    if(pirateCardValue > 21){
+    else if(pirateCardValue > 21){
       status("player");
 
       $(".decision").hide();
@@ -284,7 +300,6 @@ $(() => { //start of on ready function
 
     } else {
       status("pirate");
-
       $(".decision").hide();
       pirateBoatPoints += 150;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
@@ -301,6 +316,7 @@ $(() => { //start of on ready function
   let deck1 = new deckOfCards();
 
   const start = () => {
+
     if(deck1.deck.length < 4) {//make sure there are enough cards to deal
       newDeckofCards();
     };
@@ -319,8 +335,8 @@ $(() => { //start of on ready function
     deck1.dealCardsPlayer();
     deck1.dealCardsPirate();
     deck1.dealCardsPlayer();
-    deck1.dealCardsPirate();
-    $("#lets-play").hide();
+    // deck1.dealCardsPirate();
+    // $("#lets-play").hide();
 
   }; //end of start function
 
