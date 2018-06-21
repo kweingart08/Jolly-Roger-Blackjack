@@ -204,12 +204,11 @@ $(() => { //start of on ready function
   const checkForBlackjack = () => {
     //blackjack is if the first 2 cards are an ACE and a face card
     if((playerCards[0].value === 11 && playerCards[1].value === 10) || (playerCards[1].value === 11 && playerCards[0].value === 10)){
-      // deck1.dealCardsPirate();
+
       //need to check if pirate has blackjack
       $("#back-of-card").remove(); //remove the back of the card
       $("#pirate-cards").children("div:first").children().show(); //shows the first element once the stand button is clicked
 
-      // pirateCardValue = pirateCards[0].value + pirateCards[1].value;//****index 1 is showing up as undefined.
       for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
         pirateCardValue += card.value;
 
@@ -231,9 +230,6 @@ $(() => { //start of on ready function
         checkTotalPoints();
         }
     }
-    // else {
-    //   deck1.dealCardsPirate();
-    // }
   }; //end of check for blackjack
 
   const checkForBust = () => {
