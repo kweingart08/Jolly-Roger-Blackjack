@@ -3,14 +3,23 @@
 ## Getting Started
   These instructions within getting started will present any installation needed, and technologies used to create the game.
 ### Installation Instructions
+  In Order to Play the game:
+  ...-Google Chrome - [https://www.google.com/chrome/?brand=CHBD&gclid=CjwKCAjwma3ZBRBwEiwA-CsblPyvpR22B4RBmScNdFsqzR9hq_NR4nT8yE9sKUWpPhPRTU6JPPvV-RoCpfMQAvD_BwE&gclsrc=aw.ds&dclid=CNiA3IWs5dsCFQ4EaQodm50Pyw]
 
+  In Order to Re-produce or continue Coding:
+  ...-Atom - [https://atom.io/]
 ### Technologies Used
+  Technologies Used While Building the Game:
+  ...-Atom:
+  ......-HTML was used to build the framework of the page.
+  ......-CSS was used to style the initial page.
+  ......-Javascript & jQuery were used for the game functionality and DOM manipulation.
 
 ## Development
   These development notes will describe the approach that was taken when building the game as well as some of the unsolved problems.
 
 ### Approach Taken
-
+  
 ### Unsolved Problems
 
 ## Link to Live Site
