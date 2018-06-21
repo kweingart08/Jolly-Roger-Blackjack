@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- linking style sheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- google fonts link -->
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Shrikhand|UnifrakturCook:700" rel="stylesheet">
+    <!-- font awesome link -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <!-- linking jQuery  -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <!-- linking javascript  -->
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <title>Jolly Roger Blackjack</title>
+  </head>
+  <body>
+    <!-- CREATING MODAL FOR INSTRUCTIONS -->
+    <!-- button to open modal -->
+    <div class="top-banner-buttons">
+      <button type="button" name="button" id="openModal" class="modal-buttons">About the Game</button>
+      <button type="button" name="button" id="restart">Start Over</button>
+    </div>
+    <!-- modal  -->
+    <div id="modal">
+      <div id="modal-textbox">
+        <!-- header -->
+        <h1 id="modal-title">Learn to Play Jolly Roger Blackjack</h1>
+        <!-- content -->
+        <p>You were stranded on an island and just heard the pirates are headed for land to steal all the people's gold, silver, and jewels! Luckily, you just found a sailboat! It is your job to make it to land before the pirates do in order to warn the townspeople!!</p>
+        <p><span id="quick">Quick!! </span>You have to play blackjack against the pirates. If you win a hand, your boat will move forward towards land. If you lose, the pirates will get closer to the treasures!</p>
+        <p id="goal">GOAL: Try to make it to land before the pirates do!</p>
+        <!-- close button -->
+        <div id="modal-footer">
+          <!-- <a href="#" id="close">Close</a> -->
+          <button type="button" name="button" class="modal-buttons" id="close">Close</button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- creating container for all contents -->
+    <div class="container">
+      <h1>Jolly-Roger-Blackjack</h1>
+      <!-- creating div for top portion with boats and land images for the race -->
+      <div class="race">
+        <!-- creating boat div for boat and water images  -->
+        <div class="boat-races">
+          <div class="boat">
+            <div class="boat-picture">
+              <img src="images/boats-water/sailboat.png" alt="Boat" class=
+              "boat-image" id="player-boat">
+            </div>
+          </div>
+          <div class="boat">
+            <div class="boat-picture">
+              <img src="images/boats-water/pirate-ship.png" alt="Boat" class=
+              "boat-image" id="pirate-boat">
+            </div>
+          </div>
+        </div>
+
+        <div class="land">
+          <img src="images/boats-water/water-and-land.png" alt="Land" id="land">
+        </div>
+
+      </div>
+      <!-- creating bottom div for cards and game portion -->
+      <div class="game">
+        <div id="header-to-start">
+          <button type="button" name="button" id="lets-play">Deal Me In!</button>
+        </div>
+        <div class="players">
+
+          <div id="player1">
+            <div class="people">
+              <img src="images/player.png" alt="Player" class="players-image">
+            </div>
+            <div class="player1-cards">
+              <div class="cards" id="player-cards">
+
+              </div>
+            </div>
+          </div>
+
+          <div class="versus">
+            <p id="status"></p>
+            <!-- <h2>VS</h2> -->
+            <div class="hit-and-stay">
+              <button type="button" class="decision" id="hit">HIT <i class="far fa-hand-point-up"></i></button>
+              <button type="button" class="decision" id="stand">STAND <i class="far fa-hand-rock"></i></button>
+            </div>
+          </div>
+
+          <div id="pirate">
+            <div class="people">
+              <img src="images/pirate.png" alt="Pirate" class="players-image">
+            </div>
+            <div class="pirates-cards">
+              <div class="cards" id="pirate-cards">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <footer id="credits">
+      <h4>Credit for Images</h4>
+      <p>Sailboat: Icon made by Freepik from www.flaticon.com</p>
+      <p>PirateBoat: Icon made by Nikita Golubev from www.flaticon.com</p>
+    </footer>
+  </body>
+</html>
