@@ -1,47 +1,4 @@
 $(() => { //start of on ready function
-  let playerBoatPoints = 0;
-  let pirateBoatPoints = 0;
-
-  //status function to change the text in the paragraph depending on who won the hand
-  const status = (status) => {
-    switch(status){
-      case "player":
-        text = "You won that hand, and your boat moves forward!";
-        break;
-      case "player-blackjack":
-        text="WOOOHOO! YOU GOT A BLACKJACK, and your boat moves forward!";
-        break;
-      case "pirate":
-        text = "Bummer. Pirate gets to move closer to land this time.";
-        break;
-      case "push":
-        text = "The hands are the same. This is a push and no one advances.";
-        break;
-      case "bust":
-        text = "Oh, shoot! You went over 21 and busted. Pirate wins this hand.";
-        break;
-    }
-    $("#status").text(text);
-  }
-
-  const checkTotalPoints = () => { //check total points to see if they made it to the land yet
-    if(playerBoatPoints >= 640){
-      $("#status").text("Yay! You made it to land before the Pirates. YOU WIN! Go warn the townspeople!");
-      playAgain();
-    }
-    else if(pirateBoatPoints >= 640){
-      $("#status").text("Oh No! The pirate made it to land first. YOU LOSE!");
-      playAgain();
-    }
-    else {
-    $("#lets-play").show();
-    }
-  }; //end of checking total points
-
-  //create empty arrays for the player and pirates cards to be pushed to.
-  let playerCards = [];
-  let pirateCards = [];
-
   //create a deck of cards and make a shuffle function
   class deckOfCards{ //class deck of cards
     constructor(){ //constructor is made of the suits and faces and an array of all of the cards
@@ -92,7 +49,6 @@ $(() => { //start of on ready function
       return this.deck;
     }
     dealCardsPlayer(){//deal the initial starting cards
-
       //when these are created , make a div and an image to put the proper one there.
       const $playerCardDiv = $("<div>").addClass("dealt-card");
       $("#player-cards").append($playerCardDiv);
@@ -102,23 +58,13 @@ $(() => { //start of on ready function
       //create image and then make this the src.
       const $image = $("<img>").attr("src", "images/cards/" + currentPlayerCard.face + currentPlayerCard.suit + ".png").addClass("card-images");
       $("#player-cards").children("div:last").append($image);
-      // $(".dealt-card").append($image);
-
-      // if(playerCards[1] && (!playerCards[2])){ //if there is a second card out there
-      //   //check if 21
-      //   $("#lets-play").hide();
-      //   checkForBlackjack();
-      // } //else wait for the hit or stand buttons to be clicked
     }
     dealCardsPirate(){
-
       const $pirateCardsDiv = $("<div>").addClass("dealt-card");
       $("#pirate-cards").append($pirateCardsDiv);
       const currentPirateCard = this.deck.shift();
       pirateCards.push(currentPirateCard);//should be placed face down
-      //make an if statment. if this is the first div then the image should be face down.
 
-      //else face up.
       //image for pirate cards created tags and appending to the last chilrdren of pirate cards
       const $pirateImage = $("<img>").attr("src", "images/cards/" + currentPirateCard.face + currentPirateCard.suit + ".png").addClass("card-images"); //need to update this source
       $("#pirate-cards").children("div:last").append($pirateImage);
@@ -129,206 +75,197 @@ $(() => { //start of on ready function
         const $backImage = $("<img>").attr("src", "images/cards/back-of-card.png").addClass("card-images").attr("id", "back-of-card");
         $pirateCardsDiv.append($backImage);
       }
-
     }
   }
 
-  const newDeckofCards = () => { //create a new deck of cards
-    deck1 = new deckOfCards();
-    deck1.shuffle();
-  };
-
-  //function for hit
-  const hit = () =>{
-
-    if(deck1.deck.length < 1) {
-      newDeckofCards();
-    }; //make sure there are enough cards to deal, if no more cards, make new deck and shuffle
-    deck1.dealCardsPlayer(); //give player another card
-    checkForBust(); //check if above 21 (bust)
-  }; //end of hit function
-
-  //function for stay
-  const stand = () => {
-
-    //need to show the first pirate element
-    $("#back-of-card").remove(); //remove the back of the card
-    $("#pirate-cards").children("div:first").children().show(); //shows the first element once the stand button is clicked
-
-    //if they are standing, then need to go check the dealers hand and determine if they need more cards.
-    pirateCardValue = 0;
-    for(let card of pirateCards){ //go through each of the values from the pirate array and add it together to get the total pirate card value
-      pirateCardValue += card.value;
-    }
-    //if under 17 need to give the pirate another card.
-      if(pirateCardValue < 17){
-        if(deck1.deck.length < 1) {
-          newDeckofCards();
-        };
-        deck1.dealCardsPirate();
-        pirateCardValue = 0;
-        for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
-        pirateCardValue += card.value;
-        }
-          if(pirateCardValue < 17){
-            if(deck1.deck.length < 1) {
-              newDeckofCards();
-            };
-            deck1.dealCardsPirate();
-            pirateCardValue = 0;
-            for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
-            pirateCardValue += card.value;
-            }
-
-            if(pirateCardValue < 17){
-              if(deck1.deck.length < 1) {
-                newDeckofCards();
-              };
-              deck1.dealCardsPirate();
-            }
-            checkForWinner();
-          }
-          else {
-            checkForWinner();
-          }
-        }
-        else {
-          checkForWinner();
-        }
-  }; //end of stand function
-
-  //create a check who won function
+  //initial variables
+  let playerBoatPoints = 0;
+  let pirateBoatPoints = 0;
+  let playerCards = []; //empty array for player cards
+  let pirateCards = []; //empty array for pirate cards
   let playerCardValue = 0; //initial value of players cards starts at 0
   let pirateCardValue = 0; //initial value of pirate cards starts at 0
+  let deck1 = new deckOfCards(); //when starting a game, create deck of cards and shuffle
+  deck1.shuffle();
+  $(".decision").hide(); //don't show the decision button at the beginning.
 
-  const checkForBlackjack = () => {
-    //blackjack is if the first 2 cards are an ACE and a face card
-    if((playerCards[0].value === 11 && playerCards[1].value === 10) || (playerCards[1].value === 11 && playerCards[0].value === 10)){
+  //status function to change the text in the paragraph depending on who won the hand
+  const status = (status) => {
+    switch(status){
+      case "player":
+        text = "You won that hand, and your boat moves forward!";
+        break;
+      case "player-blackjack":
+        text="WOOOHOO! YOU GOT A BLACKJACK, and your boat moves forward!";
+        break;
+      case "pirate":
+        text = "Bummer. Pirate gets to move closer to land this time.";
+        break;
+      case "push":
+        text = "The hands are the same. This is a push and no one advances.";
+        break;
+      case "bust":
+        text = "Oh, shoot! You went over 21 and busted. Pirate wins this hand.";
+        break;
+    }
+    $("#status").text(text);
+  }
 
-      //need to check if pirate has blackjack
+  const gameFunctions = {
+    checkPlayerCards: () => {
+      playerCardValue = 0;
+      for(let card of playerCards){ //go through each of the values from the player array and add it together to get the total player card value
+        playerCardValue += card.value;
+      }
+      return playerCardValue;
+    }, //end of check player cards value
+
+    checkPirateCards: () => {
+      pirateCardValue = 0;
+      for(let card of pirateCards){ //go through each of the values from the pirate array and add it together to get the total pirate card value
+        pirateCardValue += card.value;
+      }
+      return pirateCardValue;
+    }, //end of check pirate cards value
+
+    checkIfPirateUnder17: () => {
+      //if under 17 need to give the pirate another card.
+      gameFunctions.checkPirateCards();
+        while(pirateCardValue < 17){
+          gameFunctions.checkDeckOfCardsLength();
+          deck1.dealCardsPirate();
+          gameFunctions.checkPirateCards();
+        }
+      return pirateCardValue;
+    },
+
+    showPirateCards: () => {
       $("#back-of-card").remove(); //remove the back of the card
       $("#pirate-cards").children("div:first").children().show(); //shows the first element once the stand button is clicked
+    }, //end of show pirate cards function
 
-      for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
-        pirateCardValue += card.value;
-
+    checkDeckOfCardsLength: () => {
+      if(deck1.deck.length < 1) {
+        gameFunctions.newDeckofCards();
       }
-      console.log(pirateCardValue);
-        if(pirateCardValue === 21){
-        status("push");
-        $(".decision").hide();
-        $("#lets-play").show();
-        }
-        else {
-        status("player-blackjack");
-        $(".decision").hide();
-        $("#lets-play").show();
-        playerBoatPoints += 80;
-        $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
-        $("#player-boat").css("transition-duration", "2s");
-        $("#player-boat").css("transition-timing-function", "ease");
-        checkTotalPoints();
-        }
-    }
-  }; //end of check for blackjack
+    },
 
-  const checkForBust = () => {
-    playerCardValue = 0;
-    for(let card of playerCards){ //go through each of the values from the player array and add it together to get the total player card value
-      playerCardValue += card.value;
-    }
-    if(playerCardValue > 21){
-      status("bust");
+    newDeckofCards: () => { //create a new deck of cards
+        deck1 = new deckOfCards();
+        deck1.shuffle();
+    }, //end of check deck of cards length
 
-      $(".decision").hide();
-      pirateBoatPoints += 80;
-      $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
-      $("#pirate-boat").css("transition-duration", "2s");
-      $("#pirate-boat").css("transition-timing-function", "ease");
-      checkTotalPoints();
-    }
-  }; //end of check for bust
-
-  const checkForWinner = () => {
-    playerCardValue = 0;
-    pirateCardValue = 0;
-    //add the players cards
-    for(let card of playerCards){ //go through each of the values from the player array and add it together to get the total player card value
-      playerCardValue += card.value;
-    }
-
-    for(let card of pirateCards){ //go through each of teh values from the pirate array and add it together to get the total pirate card value
-      pirateCardValue += card.value;
-    }
-    if(playerCardValue > 21){
-      status("bust");
-      $(".decision").hide();
-      pirateBoatPoints += 80;
-      $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
-      $("#pirate-boat").css("transition-duration", "2s");
-      $("#pirate-boat").css("transition-timing-function", "ease");
-      checkTotalPoints();
-    }
-
-    else if(pirateCardValue > 21){
-      status("player");
-
-      $(".decision").hide();
-      playerBoatPoints += 80;
-      $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
-      $("#player-boat").css("transition-duration", "2s");
-      $("#player-boat").css("transition-timing-function", "ease");
-      checkTotalPoints();
-
-    } else if(playerCardValue > pirateCardValue){
-      status("player");
-
-      $(".decision").hide();
-      playerBoatPoints += 80;
-      $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
-      $("#player-boat").css("transition-duration", "2s");
-      $("#player-boat").css("transition-timing-function", "ease");
-      checkTotalPoints();
-
-    } else if(playerCardValue === pirateCardValue){
-      status("push");
+    endOfHand: () => {
       $(".decision").hide();
       $("#lets-play").show();
+    }, //end of endof hand function
 
-    } else {
-      status("pirate");
-      $(".decision").hide();
+    addPlayerPoints: () => {
+      playerBoatPoints += 80;
+      $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
+      $("#player-boat").css("transition-duration", "2s");
+      $("#player-boat").css("transition-timing-function", "ease");
+    }, //end of add player points function for each hand
+
+    addPiratePoints: () => {
       pirateBoatPoints += 80;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
       $("#pirate-boat").css("transition-duration", "2s");
       $("#pirate-boat").css("transition-timing-function", "ease");
-      checkTotalPoints();
+    }, //end of add pirate points for each hand
 
-    }
+    checkTotalPoints: () => {
+      if(playerBoatPoints >= 640){
+        $("#status").text("Yay! You made it to land before the Pirates. YOU WIN! Go warn the townspeople!");
+        eventHandlers.playAgain();
+      }
+      else if(pirateBoatPoints >= 640){
+        $("#status").text("Oh No! The pirate made it to land first. YOU LOSE!");
+        eventHandlers.playAgain();
+      }
+    }, //end of checking total points for final winner
 
-  }; //end of winner function
+    checkForBlackjack: () => {
+      if((playerCards[0].value === 11 && playerCards[1].value === 10) || (playerCards[1].value === 11 && playerCards[0].value === 10)){
 
-  //when a new game is started, create a new deckOfCards and shuffle before playing.
-  //order will be create deck, shuffle, then deal. Deal will only deal the beginning to start until a button is click.
-  let deck1 = new deckOfCards();
-  deck1.shuffle();
+        //need to check if pirate has blackjack
+        gameFunctions.showPirateCards();
+        gameFunctions.checkPirateCards();
 
-  const start = () => {
+        console.log(pirateCardValue);
 
+          if(pirateCardValue === 21){
+          status("push");
+          gameFunctions.endOfHand();
+          }
+          else {
+          status("player-blackjack");
+          gameFunctions.endOfHand();
+          gameFunctions.addPlayerPoints();
+          gameFunctions.checkTotalPoints();
+          }
+      }
+    }, //end of check for black jack function
+
+    checkForBust: () => {
+      gameFunctions.checkPlayerCards();
+      if(playerCardValue > 21){
+        status("bust");
+        gameFunctions.endOfHand();
+        gameFunctions.addPiratePoints();
+        gameFunctions.checkTotalPoints();
+      }
+    }, //end of check for bust function
+
+    checkForWinner: () => {
+      gameFunctions.checkPlayerCards();
+      gameFunctions.checkPirateCards();
+      if(playerCardValue > 21){
+        status("bust");
+        gameFunctions.endOfHand();
+        gameFunctions.addPiratePoints();
+        gameFunctions.checkTotalPoints();
+      }
+      else if(pirateCardValue > 21){
+        status("player");
+        gameFunctions.endOfHand();
+        gameFunctions.addPlayerPoints();
+        gameFunctions.checkTotalPoints();
+      }
+      else if(playerCardValue > pirateCardValue){
+        status("player");
+        gameFunctions.endOfHand();
+        gameFunctions.addPlayerPoints();
+        gameFunctions.checkTotalPoints();
+      }
+      else if(playerCardValue === pirateCardValue){
+        status("push");
+        gameFunctions.endOfHand();
+
+      }
+      else {
+        status("pirate");
+        gameFunctions.endOfHand();
+        gameFunctions.addPiratePoints();
+        gameFunctions.checkTotalPoints();
+      }
+    } //end of check for winner function
+  }; //end of gameFunctions
+
+
+  const eventHandlers = {
+    start: () => {
     if(deck1.deck.length < 4) {//make sure there are enough cards to deal
-      newDeckofCards();
-      deck1.shuffle();
+    gameFunctions.newDeckofCards();
+    deck1.shuffle();
     };
-
     playerCards=[];
     pirateCards=[];
     $(".decision").show();
     $("#status").text("");
 
-
     $("#player-cards").children().remove();
     $("#pirate-cards").children().remove();
-
 
     console.log(deck1.deck);
     deck1.dealCardsPlayer();
@@ -338,85 +275,88 @@ $(() => { //start of on ready function
     // $("#lets-play").hide();
 
     $("#lets-play").hide();
-    checkForBlackjack();
+    gameFunctions.checkForBlackjack();
+    }, //end of start method
 
-  }; //end of start function
+    hit: () => {
+      gameFunctions.checkDeckOfCardsLength();
+      deck1.dealCardsPlayer(); //give player another card
+      gameFunctions.checkForBust(); //check if above 21 (bust)
+    }, //end of hit method
 
-  const playAgain = () => {
-    $("#restart").text("Play Again");
+    stand: () => {
+      //need to show the first pirate element
+      gameFunctions.showPirateCards();
+      //if they are standing, then need to go check the dealers hand and determine if they need more cards.
+      gameFunctions.checkIfPirateUnder17();
+      gameFunctions.checkForWinner();
+    }, //end of stand method
 
-    $("#lets-play").hide();
-  }
-
-  const restart = () => {
-
-    if($("#restart").text() === "Start Over"){
-      const youSure = prompt("Are you sure you want to start over? This will clear everything", "yes/no");
-      if(youSure === "no"){
-        return;
+    restart: () => {
+      if($("#restart").text() === "Start Over"){
+        const youSure = prompt("Are you sure you want to start over? This will clear everything", "yes/no");
+        if(youSure === "no"){
+          return;
+        }
+        else if(youSure === "yes"){
+          eventHandlers.startOver();
+        }
       }
-      else if(youSure === "yes"){
-        startOver();
+
+      else if($("#restart").text() === "Play Again") {
+        eventHandlers.startOver();
       }
+    }, //end of restart method
+
+    startOver: () => {
+      playerCards=[];
+      pirateCards=[];
+      $("#player-cards").children().remove();
+      $("#pirate-cards").children().remove();
+      deck1 = new deckOfCards(); //restarting creates a fresh deck of cards
+
+      $("#player-boat").css("transform", "none");
+      $("#pirate-boat").css("transform", "none");
+
+      pirateBoatPoints = 0;
+      playerBoatPoints = 0;
+
+      $(".decision").hide();
+      $("#lets-play").show();
+      $("#status").text("");
+      $("#restart").text("Start Over");
+    }, //end of start over method
+
+    playAgain: () => {
+      $("#restart").text("Play Again");
+      $("#lets-play").hide();
     }
+  }; //end of event Handlers
 
-    else if($("#restart").text() === "Play Again") {
-      startOver();
-    }
-  }; //end of restart function
-
-  const startOver = () => {
-    playerCards=[];
-    pirateCards=[];
-    $("#player-cards").children().remove();
-    $("#pirate-cards").children().remove();
-    deck1 = new deckOfCards(); //restarting creates a fresh deck of cards
-
-    $("#player-boat").css("transform", "none");
-    $("#pirate-boat").css("transform", "none");
-
-    pirateBoatPoints = 0;
-    playerBoatPoints = 0;
-
-    $(".decision").hide();
-    $("#lets-play").show();
-    $("#status").text("");
-    $("#restart").text("Start Over");
-  }; //end of start over
-
-
-  $(".decision").hide();
-
+  //MODAL BUTTONS
   //Grabbing About the Game button
   const $openBtn = $("#openModal");
   //Grabbing the modal element
   const $modal = $("#modal");
   //Grabbing the close button
   const $closeBtn = $("#close");
-  //Event Handlers
-  const openModal = () => {
-    $modal.css("display", "block");
-    //could also use jquery .show()
-  }
-  const closeModal = () => {
-    $modal.css("display", "none");
-    //could also use jquery .hide()
-  }
+
+  const modalEventHandlers = {
+    openModal: () => {
+      $modal.css("display", "block");
+    },
+    closeModal: () => {
+      $modal.css("display", "none");
+    }
+  }; //end of modal event Handlers
 
 
   //all of the onclick functions:
-  $("#lets-play").on("click", start); //if start is clicked, run start function
-  $("#hit").on("click", hit); //if the hit button is clicked, run the hit function
-  $("#stand").on("click", stand); //if the stand button is clicked, run the stand function
-  $("#restart").on("click", restart);
-  $openBtn.on("click", openModal);
-  $closeBtn.on("click", closeModal);
-
-
-
-
-
-
-
+  $("#lets-play").on("click", eventHandlers.start); //if start is clicked, run start function
+  $("#hit").on("click", eventHandlers.hit); //if the hit button is clicked, run the hit function
+  $("#stand").on("click", eventHandlers.stand); //if the stand button is clicked, run the stand function
+  $("#restart").on("click", eventHandlers.restart);
+  $openBtn.on("click", modalEventHandlers.openModal);
+  $closeBtn.on("click", modalEventHandlers.closeModal);
 
 }); //end of on ready function
