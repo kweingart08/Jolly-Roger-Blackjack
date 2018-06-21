@@ -37,7 +37,6 @@
 ### Unsolved Problems / Additional Items Not Added
   There were a few items that were unsolved or that I didn't get to adding yet:
 
-  - Ace can be a 1 or an 11. I was not able to include this logic in the game. Therefore, while playing Jolly Roger Blackjack, the Ace is always an 11 right now.
   - There is no logic for splitting cards like the actual game of blackjack. There is room here to add that logic and possibly double the distance that the boat moves.
   - I wanted to add in some obstacles such as wind that would be randomly generated and then randomly see if the boats were able to move their sails in the right direction to either move forward or back. This is an additional item that may be added later.
 
