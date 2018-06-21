@@ -25,11 +25,11 @@ $(() => { //start of on ready function
   }
 
   const checkTotalPoints = () => { //check total points to see if they made it to the land yet
-    if(playerBoatPoints >= 900){
+    if(playerBoatPoints >= 640){
       $("#status").text("Yay! You made it to land before the Pirates. YOU WIN! Go warn the townspeople!");
       playAgain();
     }
-    else if(pirateBoatPoints >= 900){
+    else if(pirateBoatPoints >= 640){
       $("#status").text("Oh No! The pirate made it to land first. YOU LOSE!");
       playAgain();
     }
@@ -223,7 +223,7 @@ $(() => { //start of on ready function
         status("player-blackjack");
         $(".decision").hide();
         $("#lets-play").show();
-        playerBoatPoints += 150;
+        playerBoatPoints += 80;
         $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
         $("#player-boat").css("transition-duration", "2s");
         $("#player-boat").css("transition-timing-function", "ease");
@@ -241,7 +241,7 @@ $(() => { //start of on ready function
       status("bust");
 
       $(".decision").hide();
-      pirateBoatPoints += 150;
+      pirateBoatPoints += 80;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
       $("#pirate-boat").css("transition-duration", "2s");
       $("#pirate-boat").css("transition-timing-function", "ease");
@@ -263,7 +263,7 @@ $(() => { //start of on ready function
     if(playerCardValue > 21){
       status("bust");
       $(".decision").hide();
-      pirateBoatPoints += 150;
+      pirateBoatPoints += 80;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
       $("#pirate-boat").css("transition-duration", "2s");
       $("#pirate-boat").css("transition-timing-function", "ease");
@@ -274,7 +274,7 @@ $(() => { //start of on ready function
       status("player");
 
       $(".decision").hide();
-      playerBoatPoints += 150;
+      playerBoatPoints += 80;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
       $("#player-boat").css("transition-duration", "2s");
       $("#player-boat").css("transition-timing-function", "ease");
@@ -284,7 +284,7 @@ $(() => { //start of on ready function
       status("player");
 
       $(".decision").hide();
-      playerBoatPoints += 150;
+      playerBoatPoints += 80;
       $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
       $("#player-boat").css("transition-duration", "2s");
       $("#player-boat").css("transition-timing-function", "ease");
@@ -298,7 +298,7 @@ $(() => { //start of on ready function
     } else {
       status("pirate");
       $(".decision").hide();
-      pirateBoatPoints += 150;
+      pirateBoatPoints += 80;
       $("#pirate-boat").css("transform", "translate(" + pirateBoatPoints + "%)");
       $("#pirate-boat").css("transition-duration", "2s");
       $("#pirate-boat").css("transition-timing-function", "ease");
