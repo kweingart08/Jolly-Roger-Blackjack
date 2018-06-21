@@ -4,9 +4,12 @@
   These instructions within getting started will present any installation needed, and technologies used to create the game.
 ### Installation Instructions
   In Order to Play the game:
+
     * Google Chrome - [https://www.google.com/chrome/?brand=CHBD&gclid=CjwKCAjwma3ZBRBwEiwA-CsblPyvpR22B4RBmScNdFsqzR9hq_NR4nT8yE9sKUWpPhPRTU6JPPvV-RoCpfMQAvD_BwE&gclsrc=aw.ds&dclid=CNiA3IWs5dsCFQ4EaQodm50Pyw]
 
+
   In Order to Re-produce or continue Coding:
+  
     * Atom - [https://atom.io/]
 ### Technologies Used
   Technologies Used While Building the Game:
