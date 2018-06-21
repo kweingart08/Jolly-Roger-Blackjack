@@ -234,12 +234,7 @@ $(() => { //start of on ready function
     checkForWinner: () => {
       gameFunctions.checkPlayerCards();
       gameFunctions.checkPirateCards();
-      // if(playerCardValue > 21){
-      //   status("bust");
-      //   gameFunctions.endOfHand();
-      //   gameFunctions.addPiratePoints();
-      //   gameFunctions.checkTotalPoints();
-      // }
+
       if(pirateCardValue > 21){
         //need to check if any cards are aces
         pirateAce = pirateCards.some(x => x.value >10);
@@ -249,6 +244,7 @@ $(() => { //start of on ready function
           gameFunctions.addPlayerPoints();
           gameFunctions.checkTotalPoints();
         }
+        //if they have an ace, change it to a 1 and check if they are under 17 then recheck for winner
         else if(pirateAce === true){
           const cardAce = pirateCards.find(x => x.value >10);
           cardAce.value = 1;
