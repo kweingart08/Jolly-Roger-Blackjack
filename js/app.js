@@ -192,8 +192,6 @@ $(() => { //start of on ready function
         gameFunctions.showPirateCards();
         gameFunctions.checkPirateCards();
 
-        console.log(pirateCardValue);
-
           if(pirateCardValue === 21){
           status("push");
           gameFunctions.endOfHand();
@@ -267,12 +265,10 @@ $(() => { //start of on ready function
     $("#player-cards").children().remove();
     $("#pirate-cards").children().remove();
 
-    console.log(deck1.deck);
     deck1.dealCardsPlayer();
     deck1.dealCardsPirate();
     deck1.dealCardsPlayer();
     deck1.dealCardsPirate();
-    // $("#lets-play").hide();
 
     $("#lets-play").hide();
     gameFunctions.checkForBlackjack();

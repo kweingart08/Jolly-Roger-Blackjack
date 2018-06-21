@@ -3,35 +3,28 @@
   margin: auto;
   text-align: center;
 }
-
+/* div for the top half of the game with ships,water, and land */
 .race {
   width: 100%;
   height: 250px;
   display: flex;
   justify-content: center;
 }
-
+/* div that holds both the pirate and player divs for boats */
 .boat-races {
   width: 15%;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-/*
-.boat-races {
-  width: 75%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-} */
-
+/* div that holds the boat picture div and image for player and pirate */
 .boat {
   width: 100%;
   height: 50%;
   display: flex;
   justify-content: flex-start;
 }
-
+/* div that holds pirate and player boat images separately (2divs) */
 .boat-picture {
   width: 100%;
   height: 100%;
@@ -39,44 +32,26 @@
   align-items: center;
   justify-content: flex-end;
 }
-
+/* both pirate ship and player ship images */
 .boat-image {
   height: 60%;
   width: 60%;
 }
-
+/* image of players boat */
 #player-boat {
   align-self: flex-end;
 }
-
-/* .water {
-  width: 85%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.water-image {
-  height: 100%;
-  flex-grow: 1;
-  min-width: 25%;
-} */
-
+/* div that holds the image of land and water */
 .land {
   width: 85%;
   height: 100%;
 }
-/*
-.land {
-  width: 20%;
-  height: 100%;
-} */
-
+/* image of the land and water */
 #land {
   width: 100%;
   height: 100%;
 }
-
+/* bottom div with deal button and all cards and images on bottom half */
 .game {
   width: 100%;
   height: 500px;
@@ -84,7 +59,7 @@
   justify-content: center;
   flex-direction: column;
 }
-
+/* div that holds the deal me in button */
 #header-to-start {
   width: 100%;
   height: 10%;
@@ -93,14 +68,14 @@
   justify-content: center;
   margin: 10px;
 }
-
+/* overall div for bottom portion of game */
 .players {
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
 }
-
+/* larger div for all of pirate and players images and cards */
 #pirate, #player1 {
   width: 40%;
   height: 100%;
@@ -110,7 +85,7 @@
   align-items: center;
   border: 1px solid black;
 }
-
+/* div that has the status and buttons */
 .versus {
   width: 20%;
   height: 100%;
@@ -119,18 +94,18 @@
   justify-content: center;
   align-items: center;
 }
-
+/* div that holds the players images */
 .people {
   width: auto;
   height: 30%;
 }
-
+/* images of the pirate and player */
 .players-image {
   max-width: 100%;
   max-height: 100%;
 }
-
-.player1-cards {
+/* player and pirate divs to hold their card divs */
+.player1-cards, .pirates-cards {
   height: 70%;
   width: 100%;
   display: flex;
@@ -138,14 +113,7 @@
   align-items: center;
 }
 
-.pirates-cards {
-  height: 70%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* div in html created to hold the cards made in js - appended to this*/
 .cards {
   max-width: 80%;
   max-height: 100%;
@@ -154,17 +122,19 @@
   margin: auto;
 }
 
+/* div class added for cards when created in js */
 .dealt-card {
   display: inline-block;
   width: 100%;
   height: 100%;
 }
-
+/* class for card images created in js */
 .card-images {
   width: 100%;
   height: 100%;
 }
 
+/* div for hit and stand buttons */
 .hit-and-stay {
   max-width: 100%;
   display: flex;
@@ -172,19 +142,14 @@
   justify-content: center;
 }
 
+/* page title */
 h1 {
   font-family: 'Permanent Marker', cursive;
   font-size: 40px;
   margin-top: 0;
 }
 
-#lets-play {
-  margin: 0 40px;
-  font-size: 28px;
-  border-radius: 5px;
-  background: #69FFD1;
-}
-
+/* start over button */
 #restart {
   margin: 0 40px;
   background: #7F1C1F;
@@ -199,11 +164,20 @@ h1 {
   color: white;
 }
 
+/* deal me in button  */
+#lets-play {
+  margin: 0 40px;
+  font-size: 28px;
+  border-radius: 5px;
+  background: #69FFD1;
+}
+
 #lets-play:hover {
   background: #232323;
   color: white;
 }
 
+/* hit and stand buttons  */
 .decision {
   margin: 15px;
 }
@@ -219,6 +193,7 @@ h1 {
   background: #97EBFA;
 }
 
+/* bottom credits for images */
 #credits {
   font-size: 10px;
   text-align: right;
@@ -289,12 +264,14 @@ h1 {
   line-height: 20px;
 }
 
+/* paragraph showing who won the hand */
 #status {
   font-family: Arial;
   font-size: 20px;
   border-bottom: 2px solid blue;
 }
 
+/* space buttons on top to be on the outside corners */
 .top-banner-buttons {
   display: flex;
   justify-content: space-between;
