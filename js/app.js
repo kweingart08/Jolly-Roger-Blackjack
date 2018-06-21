@@ -234,17 +234,27 @@ $(() => { //start of on ready function
     checkForWinner: () => {
       gameFunctions.checkPlayerCards();
       gameFunctions.checkPirateCards();
-      if(playerCardValue > 21){
-        status("bust");
-        gameFunctions.endOfHand();
-        gameFunctions.addPiratePoints();
-        gameFunctions.checkTotalPoints();
-      }
-      else if(pirateCardValue > 21){
-        status("player");
-        gameFunctions.endOfHand();
-        gameFunctions.addPlayerPoints();
-        gameFunctions.checkTotalPoints();
+      // if(playerCardValue > 21){
+      //   status("bust");
+      //   gameFunctions.endOfHand();
+      //   gameFunctions.addPiratePoints();
+      //   gameFunctions.checkTotalPoints();
+      // }
+      if(pirateCardValue > 21){
+        //need to check if any cards are aces
+        pirateAce = pirateCards.some(x => x.value >10);
+        if(pirateAce === false){
+          status("player");
+          gameFunctions.endOfHand();
+          gameFunctions.addPlayerPoints();
+          gameFunctions.checkTotalPoints();
+        }
+        else if(pirateAce === true){
+          const cardAce = pirateCards.find(x => x.value >10);
+          cardAce.value = 1;
+          gameFunctions.checkIfPirateUnder17();
+          gameFunctions.checkForWinner();
+        }
       }
       else if(playerCardValue > pirateCardValue){
         status("player");
