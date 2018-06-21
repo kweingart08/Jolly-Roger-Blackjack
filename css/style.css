@@ -278,3 +278,8 @@ h1 {
   font-size: 20px;
   border-bottom: 2px solid blue;
 }
+
+.top-banner-buttons {
+  display: flex;
+  justify-content: space-between;
+}

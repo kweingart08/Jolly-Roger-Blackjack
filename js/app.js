@@ -27,12 +27,13 @@ $(() => { //start of on ready function
   const checkTotalPoints = () => { //check total points to see if they made it to the land yet
     if(playerBoatPoints >= 900){
       $("#status").text("Yay! You made it to land before the Pirates. YOU WIN! Go warn the townspeople!");
-      setTimeout(playAgain, 2000);
+      playAgain();
     }
     else if(pirateBoatPoints >= 900){
       $("#status").text("Oh No! The pirate made it to land first. YOU LOSE!");
-      setTimeout(playAgain, 2000);
+      playAgain();
     }
+    $("#lets-play").show();
   }; //end of checking total points
 
   //create empty arrays for the player and pirates cards to be pushed to.
@@ -89,10 +90,6 @@ $(() => { //start of on ready function
       return this.deck;
     }
     dealCardsPlayer(){//deal the initial starting cards
-      //make sure there are enough cards to deal, if no more cards, make new deck and shuffle
-      // if(this.deck.length < 1) {
-      //   newDeckofCards();
-      // };
 
       //when these are created , make a div and an image to put the proper one there.
       const $playerCardDiv = $("<div>").addClass("dealt-card");
@@ -111,10 +108,6 @@ $(() => { //start of on ready function
       } //else wait for the hit or stand buttons to be clicked
     }
     dealCardsPirate(){
-
-      // if(this.deck.length < 1) {
-      //   newDeckofCards();
-      // }; //make sure there are enough cards to deal, if no more cards, make new deck and shuffle
 
       const $pirateCardsDiv = $("<div>").addClass("dealt-card");
       $("#pirate-cards").append($pirateCardsDiv);
@@ -217,17 +210,13 @@ $(() => { //start of on ready function
         pirateCardValue += card.value;
       }
       //if under 17... make a function here to checkDealersHand?? and then give another card
-      if(pirateCardValue === 21){
+        if(pirateCardValue === 21){
         status("push");
-        // console.log("It's a PUSH. Nobody moves");
-        // setTimeout(alertPush, 1000);
         $(".decision").hide();
-      } else {
+        $("#lets-play").show();
+        } else {
         status("player-blackjack");
-        // console.log("You got a BlackJack!!");
-        // console.log(pirateCardValue);
-        // setTimeout(alertPlayerWinsHand, 2000);
-        //NEED TO FREEZE HIT AND STAND BUTTONS - MUST PRESS DEAL ME IN TO DEAL AGAIN
+
         $(".decision").hide();
         playerBoatPoints += 150;
         $("#player-boat").css("transform", "translate(" + playerBoatPoints + "%)");
@@ -236,6 +225,7 @@ $(() => { //start of on ready function
         checkTotalPoints();
         }
     }
+    $("#lets-play").show();
   }; //end of check for blackjack
 
   const checkForBust = () => {
@@ -289,8 +279,8 @@ $(() => { //start of on ready function
 
     } else if(playerCardValue === pirateCardValue){
       status("push");
-
       $(".decision").hide();
+      $("#lets-play").show();
 
     } else {
       status("pirate");
@@ -330,6 +320,7 @@ $(() => { //start of on ready function
     deck1.dealCardsPirate();
     deck1.dealCardsPlayer();
     deck1.dealCardsPirate();
+    $("#lets-play").hide();
 
   }; //end of start function
 
