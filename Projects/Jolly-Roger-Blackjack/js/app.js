@@ -35,7 +35,8 @@ $(() => { //start of on ready function
       }
     }
     shuffle(){ //create a method to shuffle the cards
-      for(let i = this.deck.length - 1; i > 0; i--){ //let the starting value be the indices and go from the back to front
+      for(let i = this.deck.length - 1; i > 0; i--){ //let the starting value be the
+        // indices and go from the back to front
         //create a randomIndex shuffle to the next index
         const randomIndex = Math.floor(Math.random()*(i+1));
         //determine what the item at that random index is
@@ -327,14 +328,18 @@ $(() => { //start of on ready function
     }, //end of restart method
 
     startOver: () => {
+
       playerCards=[];
       pirateCards=[];
-      $("#player-cards").children().remove();
-      $("#pirate-cards").children().remove();
       deck1 = new deckOfCards(); //restarting creates a fresh deck of cards
+      deck1.shuffle();
+      console.log(deckOfCards);
 
       $("#player-boat").css("transform", "none");
       $("#pirate-boat").css("transform", "none");
+
+      $("#player-cards").children().remove();
+      $("#pirate-cards").children().remove();
 
       pirateBoatPoints = 0;
       playerBoatPoints = 0;
