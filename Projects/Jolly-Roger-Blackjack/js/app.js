@@ -225,9 +225,7 @@ $(() => { //start of on ready function
         else if(playerAce === true){
           // find the first card that has a value greater than 10
           const findCard = playerCards.find(x => x.value > 10);
-          console.log(findCard);
           findCard.value = 1;
-          console.log(playerCards);
         }
       }
     }, //end of check for bust function
@@ -333,7 +331,6 @@ $(() => { //start of on ready function
       pirateCards=[];
       deck1 = new deckOfCards(); //restarting creates a fresh deck of cards
       deck1.shuffle();
-      console.log(deckOfCards);
 
       $("#player-boat").css("transform", "none");
       $("#pirate-boat").css("transform", "none");
