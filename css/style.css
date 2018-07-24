@@ -36,6 +36,10 @@ nav {
   color: var(--sand)
 }
 
+.nav-tag:hover {
+  color: var(--teal)
+}
+
 ul {
   list-style-type: none;
   box-sizing: border-box;
@@ -47,7 +51,12 @@ ul {
 }
 
 #logo {
-  width:50px;
+  width: 50px;
+}
+
+#logo:hover {
+  cursor: pointer;
+  width: 51px;
 }
 
 /* ===main front style=== */
