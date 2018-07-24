@@ -97,6 +97,7 @@ ul {
   justify-content: center;
   height: 300px;
   box-sizing: border-box;
+  margin-top: 5px;
 }
 
 .image-and-name {
@@ -152,4 +153,10 @@ ul {
 
 .project-title {
   margin: 0;
+  font-size: 26px;
+
+}
+
+.paragraph {
+  font-size: 0.90em;
 }
