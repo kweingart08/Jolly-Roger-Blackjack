@@ -197,7 +197,26 @@ ul {
 }
 
 .technologies-used {
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: bold;
-  max-width: 400px;
+  max-width: 300px;
+}
+
+
+@media only screen and (max-width: 950px) {
+
+  .paragraph {
+    font-size: 0.80em;
+  }
+
+  .technologies-used {
+    font-size: 0.9em;
+    font-weight: bold;
+    max-width: 150px;
+  }
+
+  .github-project {
+    font-size: 50px;
+  }
+
 }
