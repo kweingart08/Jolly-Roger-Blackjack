@@ -33,11 +33,22 @@ nav {
 
 .nav-tag {
   text-decoration: none;
-  color: var(--sand)
+  color: var(--sand);
+}
+
+.fa-github, .fa-linkedin, .fa-cogs {
+  text-decoration: none;
+  color: var(--sand);
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.fa-github:hover, .fa-linkedin:hover, .fa-cogs:hover {
+  color: var(--teal);
 }
 
 .nav-tag:hover {
-  color: var(--teal)
+  color: var(--teal);
 }
 
 ul {
