@@ -237,6 +237,7 @@ ul {
   background-image: url("../img/carbon_fibre_v2.png");
   background-size: auto;
   padding-bottom: 25px;
+  min-width: 700px;
 }
 
 .skills-div {
@@ -253,13 +254,21 @@ ul {
 .my-picture {
   text-align: center;
   margin-top: 35px;
+  width: 33%;
 }
 
 .my-image {
-  width: 500px;
+  width: 200px;
   border-radius: 20px;
   box-shadow: 2px 2px 2px var(--teal);
   border: 2px solid var(--teal);
+}
+
+.pictures {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .about-me {
