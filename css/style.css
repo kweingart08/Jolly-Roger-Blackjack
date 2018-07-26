@@ -226,3 +226,69 @@ ul {
   }
 
 }
+
+
+/* ====== about me  */
+.about-container {
+  width: 100%;
+  background-image: url("../img/carbon_fibre_v2.png");
+  background-size: auto;
+  padding-bottom: 25px;
+}
+
+.skills-div {
+  width: 95%;
+  background: white;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.my-picture {
+  text-align: center;
+  margin-top: 35px;
+}
+
+.my-image {
+  width: 500px;
+  border-radius: 20px;
+  border: 2px solid var(--dark-grey);
+}
+
+.about-me {
+  width: 85%;
+  margin: auto;
+  background: rgba(220, 222, 224, 0.65);
+  padding: 40px;
+  margin-top: 25px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+#name {
+  color: var(--teal);
+  font-size: 22px;
+}
+
+.bottom-div {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  margin: 25px;
+  box-sizing: border-box;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.skill-ul {
+  display: block;
+}
