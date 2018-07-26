@@ -112,14 +112,14 @@ ul {
 
 
 .projects {
-  background: var(--teal);
+  /* background: var(--teal); */
   display: flex;
   flex-direction: column;
   width: 90%;
-  height: 90%
+  /* height: 90% */
   align-items: center;
-  margin: 15px;
-  padding: 0 20px 20px 20px;
+  /* margin: 15px; */
+  /* padding: 0 20px 20px 20px; */
   border-radius: 5px;
   box-sizing: border-box;
 }
@@ -132,11 +132,12 @@ ul {
   border: 2px solid var(--dark-grey);
   border-radius: 5px;
   width: 99%;
-  justify-content: center;
+  /* justify-content: center; */
   height: 300px;
   box-sizing: border-box;
-  margin-top: 25px;
+  /* margin-top: 25px; */
   justify-content: space-between;
+  box-shadow: 0 2px 2px 2px var(--teal);
 }
 
 .image {
@@ -156,6 +157,10 @@ ul {
   justify-content: space-between;
 
 }
+
+/* .project-info, .technology, .project-links {
+  padding: 10px;
+} */
 
 .project-info {
   width: 100%;
