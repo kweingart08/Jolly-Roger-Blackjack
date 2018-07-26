@@ -105,11 +105,14 @@ ul {
   justify-content: center;
   height: 100%;
   width: 100%;
-  background-image: url("../img/carbon_fibre_v2.png");
-  background-size: auto;
-  color: white;
 }
 
+.project-container {
+  width: 100%;
+  background-image: url("../img/carbon_fibre_v2.png");
+  background-size: auto;
+  padding-bottom: 25px;
+}
 
 .projects {
   /* background: var(--teal); */
