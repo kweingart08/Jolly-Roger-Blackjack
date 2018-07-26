@@ -258,7 +258,8 @@ ul {
 .my-image {
   width: 500px;
   border-radius: 20px;
-  border: 2px solid var(--dark-grey);
+  box-shadow: 2px 2px 2px var(--teal);
+  border: 2px solid var(--teal);
 }
 
 .about-me {
