@@ -350,3 +350,16 @@ ul {
   margin-left: 18px;
   list-style-type: circle;
 }
+
+
+/* ====== work page ===== */
+
+.work {
+  width: 100%;
+}
+
+#timeline {
+  width: 100%;
+  padding: 50px;
+  box-sizing: border-box;
+}
