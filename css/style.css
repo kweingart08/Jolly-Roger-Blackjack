@@ -371,6 +371,14 @@ ul.external-links li a i:hover {
   overflow: hidden;
 }
 
+.project:hover {
+  background: var(--light-grey);
+}
+
+.project-image:hover {
+  background: rgba(0,0,0,0.5);
+  opacity: 0.5;
+}
 
 /******************** ====CONTACT PAGE STYLE==== ********************/
 .contact-me {
