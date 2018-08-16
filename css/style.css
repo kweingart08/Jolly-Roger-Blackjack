@@ -234,6 +234,7 @@ ul.external-links li a i:hover {
   width: 100%;
   padding: 15px;
   box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+  min-height: 170px;
 }
 
 .fun-facts {
@@ -246,4 +247,13 @@ ul.external-links li a i:hover {
 
 .fact-value {
   font-size: 20px;
+}
+
+/******************** ====RESUME PAGE STYLE==== ********************/
+.work {
+  height: 100%;
+  margin-left: 20%;
+  padding: 50px;
+  text-align: center;
+  border-left: 1px solid var(--dark-grey);
 }
