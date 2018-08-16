@@ -235,3 +235,15 @@ ul.external-links li a i:hover {
   padding: 15px;
   box-shadow: 0 1px 5px rgba(0,0,0,0.25);
 }
+
+.fun-facts {
+  font-family: 'Merriweather', serif;
+}
+
+.fun-title-header {
+  border-bottom: 1px solid var(--teal);
+}
+
+.fact-value {
+  font-size: 20px;
+}
