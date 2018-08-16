@@ -1,6 +1,7 @@
 /* variables for index - color scheme */
 :root {
   --teal: #00a79d;
+  --teal-t: rgba(0,167,157,0.25);
   --dark-grey: #414042;
   --light-grey: #bcbec0;
   --medium-grey: #6d6e71;
@@ -179,4 +180,58 @@ ul.external-links li a i:hover {
 
 .front-image, .name, .bkgd {
   text-align: center;
+}
+
+/******************** ====ABOUT ME PAGE STYLE==== ********************/
+/* ===about me style=== */
+.about-me {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-left: 20%;
+  padding: 50px;
+  box-sizing: border-box;
+  border-left: 1px solid var(--dark-grey);
+}
+
+.about-me-header {
+  margin-bottom: 25px;
+}
+
+#avatar {
+  max-width: 15%;
+  box-sizing: border-box;
+}
+
+.header-title {
+  display: inline-block;
+  padding: 10px;
+  background: var(--teal-t);
+  box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+  text-align: right;
+  width: 80%;
+  box-sizing: border-box;
+  margin-left: 20px;
+  font-family: 'Merriweather', serif;
+}
+
+#name {
+  font-weight: bold;
+  color: var(--teal);
+  text-decoration: underline;
+  font-size: 22px;
+}
+
+.fact i {
+  font-size: 54px;
+  color: var(--dark-grey);
+}
+
+.fact {
+  background: var(--super-lightgrey);
+  text-align: center;
+  display: block;
+  width: 100%;
+  padding: 15px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.25);
 }

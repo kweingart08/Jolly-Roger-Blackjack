@@ -6,107 +6,126 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- font awesome  -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <title></title>
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <!-- bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>About Kate</title>
   </head>
   <body>
     <div class="about-container">
-      <nav class="nav">
-        <ul>
-          <li class="nav-tag">
-            <a href="https://github.com/kweingart08" target="_blank" class="nav-tag"><i class="fab fa-github"></a></i>
-            <a href="https://www.linkedin.com/in/katelynnweingart/" target="_blank" class="nav-tag"><i class="fab fa-linkedin"></i></a>
-            <a href="https://profiles.generalassemb.ly/katelynn-weingart" target="_blank" class="nav-tag"><i class="fas fa-cogs"></i></a>
-          </li>
-
-          <li class="nav-tag"><a href="index.html" class="nav-tag">Home</a></li>
-          <li class="nav-tag"><a href="about.html" class="nav-tag active">About Me</a></li>
-          <li class="nav-tag"><a href="work.html" class="nav-tag">Work Experiences</a></li>
-          <li><a href="projects.html" class="nav-tag">Projects</a></li>
-        </ul>
-      </nav>
-
-      <div class="skills-div">
-        <div class="pic-and-about">
-          <div class="pictures">
-            <div class="my-picture">
-              <img src="img/about-me2.jpeg" alt="" class="my-image">
-            </div>
-            <div class="my-picture">
-              <img src="img/about-me1.jpg" alt="" class="my-image">
-            </div>
-            <div class="my-picture">
-              <img src="img/about-me3.jpg" alt="" class="my-image">
-            </div>
-          </div>
-          <!-- <div class="my-picture">
-            <img src="img/about-me.JPG" alt="" class="my-image">
-          </div> -->
-          <div class="about-me">
-            <p>Hi, I'm <span id="name">Kate!</span> That's me .</p>
-            <p>I grew up in the small town of Coldwater, Ohio where my childhood was filled with biking to the park to make it to swim team practice, watching my brothers play baseball, and the exciting summer jobs of cleaning offices and filing paperwork.</p>
-            <p>I decided to be adventurous and move outside of Coldwater for college (not a lot of college options in Coldwater..okay, there are none). The moment I stepped onto Marquette's campus, I fell in love, and I knew I had made my decision. The next year, I moved to Milwaukee and started studying Biomedical Engineering. I also quickly learned what Miller Lite was (which is still my drink of choice).</p>
-            <p>I have a background in engineering and an inquisitive mind that led me to transform into a passionate, full stack web developer. I am a natural born problem solver that is eager to use my skills of collaboration to effectively and efficiently deliver powerful and beautiful solutions that meet customers needs.</p>
-          </div>
+      <header id="index_header" class="header">
+        <div class="my-logo">
+          <img src="img/Logo.png" alt="kate-logo" id="logo">
         </div>
-
-        <div class="bottom-div">
-          <div class="skills">
-            <div class="skill-title">
-              <h5 class="skill-h5">Skills</h5>
-            </div>
-            <div class="skill-icon">
-              <i class="fas fa-toolbox"></i>
-            </div>
-            <div class="skill-description">
-              <h4 class="skill-type">Soft Skills</h4>
-              <ul class="skill-ul">
-                <li class="skill-li">Organization</li>
-                <li class="skill-li">Problem Solving</li>
-                <li class="skill-li">Collaboration</li>
-                <li class="skill-li">Management</li>
-              </ul>
-              <br>
-              <h4 class="skill-type">Technical Skills</h4>
-              <ul class="skill-ul">
-                <li class="skill-li">HTML</li>
-                <li class="skill-li">CSS</li>
-                <li class="skill-li">JavaScript</li>
-                <li class="skill-li">Express</li>
-                <li class="skill-li">Node.JS</li>
-                <li class="skill-li">Git/Github</li>
-                <li class="skill-li">MongoDB</li>
-                <li class="skill-li">Angular</li>
-                <li class="skill-li">Ruby</li>
-                <li class="skill-li">SQL</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="skills">
-            <div class="skill-title">
-              <h5 class="skill-h5">Interests</h5>
-            </div>
-            <div class="skill-icon">
-              <i class="far fa-thumbs-up"></i>
-            </div>
-            <div class="skill-description">
-              <ul class="skill-ul">
-                <li class="skill-li">Creative Projects</li>
-                <li class="skill-li">Outdoors:
-                  <ul class="skill-ul sub-ul">
-                    <li class="skill-li sub-skill">Biking</li>
-                    <li class="skill-li sub-skill">Hiking</li>
-                    <li class="skill-li sub-skill">Skiing</li>
-                  </ul>
-                </li>
-                <li class="skill-li">Coffee</li>
-                <li class="skill-li">Music</li>
-              </ul>
-            </div>
-          </div>
+        <div class="index-title-block">
+          <h1 class="index-title">Katelynn Weingart</h1>
+          <p class="index-description">Developer</p>
         </div>
+        <!-- navigation and external links -->
+        <div class="nav">
+          <!-- Main nav for index links -->
+          <ul id="nav" class="index-main-nav">
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="about.html">About Me</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <!-- Main menu for index links -->
+
+          <!-- External Links -->
+          <ul class="external-links">
+            <li>
+              <a href="https://github.com/kweingart08" target="_blank" class="external-button">
+              <i class="fab fa-github"></i>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.linkedin.com/in/katelynnweingart/" target="_blank" class="external-button"><i class="fab fa-linkedin"></i>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://profiles.generalassemb.ly/katelynn-weingart" target="_blank" class="external-button"><i class="fas fa-cog"></i>
+              </a>
+            </li>
+          </ul>
+          <!-- External Links -->
+        </div>
+        <!-- navigation and external links -->
+      </header>
+
+      <!-- about me main div -->
+      <div class="about-me">
+        <!-- header with title -->
+        <div class="about-me-header">
+          <img src="img/Kate_avatar.png" alt="kate-avatar" id="avatar">
+          <h2 class="header-title">About Me</h2>
+        </div>
+        <!-- header with title -->
+        <!-- about me description paragraph -->
+        <div class="about-me-description">
+          <p>Hi, I'm <span id="name">Kate!</span></p>
+          <p>I grew up in the small town of Coldwater, Ohio where my childhood was filled with biking to the park to make it to swim team practice, watching my brothers play baseball, and the exciting summer jobs of cleaning offices and filing paperwork.</p>
+          <p>I decided to be adventurous and move outside of Coldwater for college (not a lot of college options in Coldwater..okay, there are none). The moment I stepped onto Marquette's campus, I fell in love, and I knew I had made my decision. The next year, I moved to Milwaukee and started studying Biomedical Engineering. I also quickly learned what Miller Lite was (which is still my drink of choice).</p>
+          <p>I have a background in engineering and an inquisitive mind that led me to transform into a passionate, full stack web developer. I am a natural born problem solver that is eager to use my skills of collaboration to effectively and efficiently deliver powerful and beautiful solutions that meet customers needs.</p>
+        </div>
+        <!-- about me description paragraph -->
+        <!-- fun facts div -->
+        <div class="fun-facts">
+          <!-- fun fact header -->
+          <div class="fun-title">
+            <h3>Fun Facts</h3>
+          </div>
+          <!-- fun fact header -->
+          <!-- fun facts row -->
+          <div class="row">
+            <!-- fun fact column -->
+            <div class="col-fact col-sm-6 col-md-3">
+              <div class="fact">
+                <i class="fas fa-coffee"></i>
+                <h4 class="fact-header">Coffee Consumed</h4>
+                <span class="fact-value">>20,000</span>
+              </div>
+            </div>
+            <!-- fun fact column -->
+            <!-- fun fact column -->
+            <div class="col-fact col-sm-6 col-md-3">
+              <div class="fact">
+                <i class="fas fa-coffee"></i>
+                <h4 class="fact-header">Coffee Consumed</h4>
+                <span class="fact-value">>20,000</span>
+              </div>
+            </div>
+            <!-- fun fact column -->
+            <!-- fun fact column -->
+            <div class="col-fact col-sm-6 col-md-3">
+              <div class="fact">
+                <i class="fas fa-coffee"></i>
+                <h4 class="fact-header">Coffee Consumed</h4>
+                <span class="fact-value">>20,000</span>
+              </div>
+            </div>
+            <!-- fun fact column -->
+            <!-- fun fact column -->
+            <div class="col-fact col-sm-6 col-md-3">
+              <div class="fact">
+                <i class="fas fa-coffee"></i>
+                <h4 class="fact-header">Coffee Consumed</h4>
+                <span class="fact-value">>20,000</span>
+              </div>
+            </div>
+            <!-- fun fact column -->
+          </div>
+          <!-- fun facts row -->
+        </div>
+        <!-- fun facts div -->
       </div>
+      <!-- about me main div -->
 
-    </div>
   </body>
 </html>
