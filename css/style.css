@@ -309,14 +309,26 @@ ul.external-links li a i:hover {
 }
 
 .skill_1 {
-  width: 95%;
-}
-.skill_2 {
   width: 75%;
 }
-.skill_3 {
+.skill_2 {
   width: 65%;
 }
-.skill_4 {
+.skill_3 {
   width: 45%;
+}
+.skill_4 {
+  width: 55%;
+}
+.skill_5 {
+  width: 55%;
+}
+.skill_6 {
+  width: 55%;
+}
+.skill_7 {
+  width: 45%;
+}
+.skill_8 {
+  width: 65%;
 }
