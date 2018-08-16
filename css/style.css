@@ -426,3 +426,30 @@ input, textarea {
 .form-btn:hover {
   color: var(--light-grey);
 }
+
+/* modal style */
+#modal_1, #modal_2, #modal_3, #modal_4 {
+	background-color: rgba(0,0,0,0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	/*This puts our modal in front of the body (which has a default z-index setting of `0`*/
+	overflow: auto;
+	/*If overflow is clipped, a scroll-bar should be added to see the rest of the content*/
+  margin-left: 20%;
+  display: none;
+}
+
+#modal-textbox-1, #modal-textbox-2, #modal-textbox-3, #modal-textbox-4 {
+	background-color: white;
+	height: 350px;
+	width: 550px;
+	border-radius: 2px;
+  margin: 150px auto;
+  /*This will set the margins for the top and the bottom to 150px (or larger). The right and left will automatically set themselves (and keep the box centered horizontally).*/
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  /*This will give the box some depth.*/
+}
