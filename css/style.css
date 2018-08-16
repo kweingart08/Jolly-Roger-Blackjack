@@ -183,6 +183,10 @@ ul.external-links li a i:hover {
 }
 
 /******************** ====ABOUT ME PAGE STYLE==== ********************/
+.about-container {
+  height: 100%;
+  position: relative;
+}
 /* ===about me style=== */
 .about-me {
   display: flex;
@@ -336,6 +340,10 @@ ul.external-links li a i:hover {
 
 
 /******************** ====PORTFOLIO PAGE STYLE==== ********************/
+.project-container {
+  height: 100%;
+}
+
 .main-projects {
   height: 100%;
   margin-left: 20%;
@@ -381,6 +389,10 @@ ul.external-links li a i:hover {
 }
 
 /******************** ====CONTACT PAGE STYLE==== ********************/
+.contact-container {
+  height: 100%;
+}
+
 .contact-me {
   font-family: 'Merriweather', serif;
 }
