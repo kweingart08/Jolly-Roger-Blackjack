@@ -196,6 +196,7 @@ ul.external-links li a i:hover {
 
 .about-me-header {
   margin-bottom: 25px;
+  text-align: center;
 }
 
 #avatar {
@@ -241,8 +242,10 @@ ul.external-links li a i:hover {
   font-family: 'Merriweather', serif;
 }
 
-.fun-title-header {
+.fun-title-header, .skill-title-header {
   border-bottom: 1px solid var(--teal);
+  text-align: left;
+  padding: 10px 0;
 }
 
 .fact-value {
@@ -250,10 +253,36 @@ ul.external-links li a i:hover {
 }
 
 /******************** ====RESUME PAGE STYLE==== ********************/
-.work {
+.work-and-skills {
   height: 100%;
   margin-left: 20%;
   padding: 50px;
   text-align: center;
   border-left: 1px solid var(--dark-grey);
+}
+
+#resume {
+  max-width: 15%;
+  box-sizing: border-box;
+}
+
+.work-and-skills {
+  font-family: 'Merriweather', serif;
+}
+
+.resume-download {
+  margin: 20px;
+  text-align: right;
+}
+
+.resume-download a {
+  border: 1px solid var(--dark-grey);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--teal);
+}
+
+.resume-download a:hover {
+  text-decoration: none;
+  color: var(--teal-t);
 }
