@@ -25,12 +25,15 @@ body {
 }
 
 /******************** ====INDEX PAGE STYLE==== ********************/
-
+.index-container {
+  height: 100%;
+  position: relative;
+}
 
 /* ====nav bar style==== */
 .header {
   position: fixed;
-  width: 22%;
+  width: 20%;
   height: 100%;
   background: #fff;
   overflow: auto;
@@ -150,68 +153,10 @@ ul.external-links li a i {
   font-size: 26px;
 }
 
-/*
-nav {
-  background: #fff;
-  box-sizing: border-box;
-  box-shadow: inset 0 10px 5px -5px var(--teal);
-  text-align: center;
-}
-
-.nav-links-li {
-  display: flex;
-}
-
-.nav-tag {
-  text-decoration: none;
-  color: var(--sand);
-  width: 100%;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
-}
-
-.active-li {
-  border-right: 5px solid var(--teal);
-}
-
-.active {
+ul.external-links li a i:hover {
+  font-size: 29px;
   color: var(--teal);
 }
-
-.fa-github, .fa-linkedin, .fa-cogs {
-  text-decoration: none;
-  color: var(--sand);
-  font-size: 25px;
-  margin-right: 10px;
-}
-
-.fa-github:hover, .fa-linkedin:hover, .fa-cogs:hover {
-  color: var(--teal);
-}
-
-.nav-tag:hover {
-  color: var(--teal);
-}
-
-ul {
-  list-style-type: none;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-}
-
-#logo {
-  width: 50px;
-}
-
-#logo:hover {
-  cursor: pointer;
-  width: 51px;
-} */
 
 /* ===main front style=== */
 #front-pic {
@@ -220,19 +165,18 @@ ul {
   border: 2px solid white;
 }
 
-.index-container {
-  width: 100%;
-  display: flex;
-}
-
 .front {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100%;
+  height: 100%;
+  margin-left: 20%;
   background-image: url("../img/carbon_fibre_v2.png");
   background-size: auto;
   color: white;
+}
+
+.front-image, .name, .bkgd {
+  text-align: center;
 }
