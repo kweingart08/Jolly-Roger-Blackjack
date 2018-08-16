@@ -286,3 +286,37 @@ ul.external-links li a i:hover {
   text-decoration: none;
   color: var(--teal-t);
 }
+
+.skill-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skill-name h4 {
+  font-size: 14px;
+}
+
+/* skill bar */
+.skill-bar {
+  width: 100%;
+  background: var(--light-grey-t);
+  height: 15px;
+}
+
+.skills-area {
+  background: var(--teal);
+  height: 15px;
+}
+
+.skill_1 {
+  width: 95%;
+}
+.skill_2 {
+  width: 75%;
+}
+.skill_3 {
+  width: 65%;
+}
+.skill_4 {
+  width: 45%;
+}
