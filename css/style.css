@@ -354,6 +354,23 @@ ul.external-links li a i:hover {
   font-family: 'Merriweather', serif;
 }
 
+.project {
+  height: 200px;
+  border: 1px solid black;
+  margin: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--dark-grey);
+  overflow: hidden;
+}
+
+.project-image {
+  height: 100%;
+  display: inline-block;
+  overflow: hidden;
+}
+
 
 /******************** ====CONTACT PAGE STYLE==== ********************/
 .contact-me {
