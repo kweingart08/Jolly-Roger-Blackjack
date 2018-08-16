@@ -242,7 +242,7 @@ ul.external-links li a i:hover {
   font-family: 'Merriweather', serif;
 }
 
-.fun-title-header, .skill-title-header {
+.fun-title-header, .skill-title-header, .project-title-header {
   border-bottom: 1px solid var(--teal);
   text-align: left;
   padding: 10px 0;
@@ -264,6 +264,7 @@ ul.external-links li a i:hover {
 #resume {
   max-width: 15%;
   box-sizing: border-box;
+  border-radius: 10px;
 }
 
 .work-and-skills {
@@ -331,4 +332,72 @@ ul.external-links li a i:hover {
 }
 .skill_8 {
   width: 65%;
+}
+
+
+/******************** ====PORTFOLIO PAGE STYLE==== ********************/
+.main-projects {
+  height: 100%;
+  margin-left: 20%;
+  padding: 50px;
+  text-align: center;
+  border-left: 1px solid var(--dark-grey);
+}
+
+#portfolio {
+  max-width: 15%;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.project-title {
+  font-family: 'Merriweather', serif;
+}
+
+
+/******************** ====CONTACT PAGE STYLE==== ********************/
+.contact-me {
+  font-family: 'Merriweather', serif;
+}
+
+.contact-headers {
+  font-size: 20px;
+}
+
+.info ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.info i {
+  font-size: 28px;
+  margin: 15px;
+  color: var(--light-grey);
+}
+
+.info li {
+  text-align: left;
+}
+
+input, textarea {
+  width: 100%;
+}
+
+.contact-header {
+  font-size: 30px;
+}
+
+#phone {
+  max-width: 15%;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.form-inputs {
+  margin: 10px;
+}
+
+.form-btn:hover {
+  color: var(--light-grey);
 }
