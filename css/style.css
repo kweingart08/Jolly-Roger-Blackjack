@@ -406,87 +406,77 @@ ul.external-links li a i:hover {
 }
 
 /* === soft skills ==== */
-.pie-wrapper {
-  display:inline-block;
-  position:relative;
-  width:150px;
-  height:150px;
-  margin:10px;
-  border:10px  solid #ddd;
-  border-radius:50%
-}
-.pie-wrapper .pie {
-  clip:rect(0,150px,150px,50px);
-  height:150px;
-  position:absolute;
-  width:150px;
-  margin:-10px 0 0 -10px
-}
-.pie-wrapper .pie .half-circle {
-  border:10px solid #3450db;
-  clip:rect(0,50px,150px,0);
-  height:150px;
-  position:absolute;
-  width:150px;
-  border-radius:50%
-}
-
-.pie-wrapper .label{
-  position:absolute;
+.col-circles {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width:130px;
-  height:130px;
-  color:#7f8c8d;
-  cursor:default;
-  font-size:3em;
-  line-height:3em;
-  text-align:center;
-  border-radius:50%
 }
-.pie-wrapper .label em {
-  padding-bottom:20px;
-  color:#bdc3c7;
-  font-size:.45em;
-  vertical-align:super;
-  font-style:normal;
+
+.pie-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  border: 10px solid var(--light-grey-t);
+  border-radius: 50%;
 }
-.pie-wrapper .shadow {
-  width:100%;
-  height:100%;
-  border:20px solid #3450db;
+.pie-wrapper .pie {
+  clip: rect(0, 200px, 200px, 100px);
+  height: 200px;
+  position: absolute;
+  width: 200px;
+  margin: -10px 0 0 -10px;
+}
+.pie-wrapper .pie .half-circle {
+  border: 10px solid #000ba7;
+  clip: rect(0, 100px, 200px, 0);
+  height: 200px;
+  position: absolute;
+  width: 200px;
+  border-radius: 50%;
+}
+.pie-wrapper .label {
+  position: absolute;
+  top: 30%;
+  display: block;
+  width: 180px;
+  height: 180px;
+  color: var(--medium-grey);
+  cursor: default;
+  font-size: 1.2em;
+  line-height: 3em;
+  text-align: center;
   border-radius: 50%;
 }
 
-.pie-wrapper.progress-half .pie .right-side {
-  display: none;
-}
-.pie-wrapper.progress-half .pie .half-circle {
-  border-style:solid;
-  border-image:-webkit-linear-graident(#ff0000, #ffff00);
-}
-.pie-wrapper.progress-half .pie .left-side,.pie-wrapper.progress-full .pie .left-side {
-  -webkit-transform: rotate(165deg);
-  -moz-transform: rotate(165deg);
-  transform: rotate(165deg);
-}
-.pie-wrapper.progress-full .pie .left-side{
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
+.pie-wrapper.progress-95 .pie .left-side,
+.pie-wrapper.progress-85 .pie .left-side,
+.pie-wrapper.progress-80 .pie .left-side {
   transform: rotate(180deg);
 }
-.pie-wrapper.progress-full .pie{
-  clip:inherit;
+.pie-wrapper.progress-95 .pie,
+.pie-wrapper.progress-85 .pie,
+.pie-wrapper.progress-80 .pie {
+  clip: inherit;
 }
-.pie-wrapper.progress-full .pie .right-side {
-  display:block;
+.pie-wrapper.progress-95 .pie .right-side,
+.pie-wrapper.progress-85 .pie .right-side,
+.pie-wrapper.progress-80 .pie .right-side {
+  display: block;
 }
 
-.pie-wrapper.progress-full .pie .right-side{
-  -webkit-transform: rotate(300deg);
-  -moz-transform: rotate(300deg);
-  transform: rotate(300deg);
+/* different rotations depending on the class  */
+.pie-wrapper.progress-95 .pie .right-side {
+  transform: rotate(342deg);
+}
+
+.pie-wrapper.progress-85 .pie .right-side {
+  transform: rotate(306deg);
+}
+.pie-wrapper.progress-80 .pie .right-side {
+  transform: rotate(288deg);
 }
 
 
