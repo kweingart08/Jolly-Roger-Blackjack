@@ -200,6 +200,19 @@ ul.external-links li a i:hover {
   25% {border-color: var(--teal);}
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+
+#footer-name {
+  color: var(--teal);
+  text-decoration: underline;
+  font-size: 1.2em;
+}
+
+
 /******************** ====ABOUT ME PAGE STYLE==== ********************/
 .about-container {
   height: 100%;
