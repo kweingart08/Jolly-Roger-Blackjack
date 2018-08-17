@@ -406,9 +406,89 @@ ul.external-links li a i:hover {
 }
 
 /* === soft skills ==== */
+.pie-wrapper {
+  display:inline-block;
+  position:relative;
+  width:150px;
+  height:150px;
+  margin:10px;
+  border:10px  solid #ddd;
+  border-radius:50%
+}
+.pie-wrapper .pie {
+  clip:rect(0,150px,150px,50px);
+  height:150px;
+  position:absolute;
+  width:150px;
+  margin:-10px 0 0 -10px
+}
+.pie-wrapper .pie .half-circle {
+  border:10px solid #3450db;
+  clip:rect(0,50px,150px,0);
+  height:150px;
+  position:absolute;
+  width:150px;
+  border-radius:50%
+}
 
+.pie-wrapper .label{
+  position:absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:130px;
+  height:130px;
+  color:#7f8c8d;
+  cursor:default;
+  font-size:3em;
+  line-height:3em;
+  text-align:center;
+  border-radius:50%
+}
+.pie-wrapper .label em {
+  padding-bottom:20px;
+  color:#bdc3c7;
+  font-size:.45em;
+  vertical-align:super;
+  font-style:normal;
+}
+.pie-wrapper .shadow {
+  width:100%;
+  height:100%;
+  border:20px solid #3450db;
+  border-radius: 50%;
+}
 
-/* can i transform the radius from 0deg to 270deg  */
+.pie-wrapper.progress-half .pie .right-side {
+  display: none;
+}
+.pie-wrapper.progress-half .pie .half-circle {
+  border-style:solid;
+  border-image:-webkit-linear-graident(#ff0000, #ffff00);
+}
+.pie-wrapper.progress-half .pie .left-side,.pie-wrapper.progress-full .pie .left-side {
+  -webkit-transform: rotate(165deg);
+  -moz-transform: rotate(165deg);
+  transform: rotate(165deg);
+}
+.pie-wrapper.progress-full .pie .left-side{
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.pie-wrapper.progress-full .pie{
+  clip:inherit;
+}
+.pie-wrapper.progress-full .pie .right-side {
+  display:block;
+}
+
+.pie-wrapper.progress-full .pie .right-side{
+  -webkit-transform: rotate(300deg);
+  -moz-transform: rotate(300deg);
+  transform: rotate(300deg);
+}
+
 
 
 /******************** ====PORTFOLIO PAGE STYLE==== ********************/
