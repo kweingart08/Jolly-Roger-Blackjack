@@ -209,7 +209,6 @@ ul.external-links li a i:hover {
 .about-me {
   display: flex;
   flex-direction: column;
-  height: 100%;
   margin-left: 20%;
   padding: 50px;
   box-sizing: border-box;
@@ -324,37 +323,92 @@ ul.external-links li a i:hover {
   width: 100%;
   background: var(--light-grey-t);
   height: 15px;
+  border-radius: 3px;
 }
 
 .skills-area {
   background: var(--teal);
   height: 15px;
+  border-radius: 3px;
 }
 
 .skill_1 {
-  width: 75%;
-}
-.skill_2 {
+  animation-name: bar1;
+  animation-duration: 2s;
   width: 65%;
 }
+.skill_2 {
+  animation-name: bar2;
+  animation-duration: 2s;
+  width: 60%;
+}
 .skill_3 {
+  animation-name: bar3;
+  animation-duration: 2s;
   width: 45%;
 }
 .skill_4 {
+  animation-name: bar4;
+  animation-duration: 2s;
   width: 55%;
 }
 .skill_5 {
+  animation-name: bar5;
+  animation-duration: 2s;
   width: 55%;
 }
 .skill_6 {
+  animation-name: bar6;
+  animation-duration: 2s;
   width: 55%;
 }
 .skill_7 {
+  animation-name: bar7;
+  animation-duration: 2s;
   width: 45%;
 }
 .skill_8 {
-  width: 65%;
+  animation-name: bar8;
+  animation-duration: 2s;
+  width: 55%;
 }
+@keyframes bar1 {
+  from {width: 0%}
+  to {width: 65%}
+}
+@keyframes bar2 {
+  from {width: 0%}
+  to {width: 60%}
+}
+@keyframes bar3 {
+  from {width: 0%}
+  to {width: 45%}
+}
+@keyframes bar4 {
+  from {width: 0%}
+  to {width: 55%}
+}
+@keyframes bar5 {
+  from {width: 0%}
+  to {width: 55%}
+}
+@keyframes bar6 {
+  from {width: 0%}
+  to {width: 55%}
+}
+@keyframes bar7 {
+  from {width: 0%}
+  to {width: 45%}
+}
+@keyframes bar8 {
+  from {width: 0%}
+  to {width: 55%}
+}
+
+/* === soft skills ==== */
+
+
+/* can i transform the radius from 0deg to 270deg  */
 
 
 /******************** ====PORTFOLIO PAGE STYLE==== ********************/
