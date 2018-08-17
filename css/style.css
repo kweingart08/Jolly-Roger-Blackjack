@@ -607,7 +607,6 @@ input, textarea {
 	/*This puts our modal in front of the body (which has a default z-index setting of `0`*/
 	overflow: auto;
 	/*If overflow is clipped, a scroll-bar should be added to see the rest of the content*/
-  margin-left: 20%;
   display: none;
 }
 
@@ -623,6 +622,15 @@ input, textarea {
   padding: 2%;
   line-height: 120%;
   text-align: left;
+  border-radius: 20px;
+}
+
+.project-name h1{
+  border-bottom: 1px solid var(--teal);
+}
+
+.project-info {
+  margin-bottom: 30px;
 }
 
 .project-links {
@@ -630,6 +638,18 @@ input, textarea {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+}
+
+.close-tag {
+  border: 1px solid var(--dark-grey);
+  padding: 5px 20px;
+  border-radius: 5px;
+  color: #000ba7;
+}
+
+.close-tag:hover {
+  text-decoration: none;
+  color: var(--light-grey);
 }
 
 .github-project {
