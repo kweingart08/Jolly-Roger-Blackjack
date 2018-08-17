@@ -1,5 +1,4 @@
 $( () => {
-
   //modal 1 - HealthTrax
   const $openModal_1 = $('#project1');
   const $modal_1 = $('#modal_1');
