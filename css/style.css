@@ -201,9 +201,10 @@ ul.external-links li a i:hover {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
+  width: 100%;
   text-align: center;
+  margin: 80px auto 0;
+
 }
 
 #footer-name {
@@ -675,4 +676,53 @@ input, textarea {
   background: var(--light-grey-t);
   padding: 5px;
   margin: 5px;
+}
+
+
+.front-icon {
+  margin-left: 20px;
+}
+
+/* *** responsive *** */
+@media (max-width: 768px) {
+  .front-icon {
+    margin: 0;
+  }
+
+  .header-name {
+    display: none;
+  }
+
+  h1.index-title {
+    display: none;
+  }
+
+  p.index-description {
+    display: none;
+  }
+
+  ul.external-links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  ul.external-links li a i {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  div.footer p {
+    font-size: 14px;
+  }
+
+  .header-title {
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  #avatar, #resume, #portfolio, #phone {
+    max-width: 30%;
+  }
+
 }
